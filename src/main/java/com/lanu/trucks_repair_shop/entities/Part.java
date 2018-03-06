@@ -19,7 +19,7 @@ public class Part {
     private boolean isInstaled;
 
     @ManyToOne
-    @JoinColumn(name = "UNIT_ID")
+    @JoinColumn(name = "unit_vinNumber")
     private Unit unit;
 
     private Long milage;

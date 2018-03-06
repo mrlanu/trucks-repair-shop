@@ -15,7 +15,7 @@ public class Breaking {
     private Long milage;
 
     @ManyToOne
-    @JoinColumn(name = "UNIT_ID")
+    @JoinColumn(name = "unit_vinNumber")
     private Unit unit;
 
     @OneToMany(mappedBy = "breaking", cascade = CascadeType.ALL)

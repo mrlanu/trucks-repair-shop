@@ -3,26 +3,20 @@ package com.lanu.trucks_repair_shop.entities;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
 public class Unit {
 
     @Id
-    @NotEmpty
     @Column(unique = true)
-    @Size(min = 8)
     private Long vinNumber;
 
-    @NotEmpty
     private String kind;
 
-    @NotEmpty
     @Column(unique = true)
     private int number;
 
-    @NotEmpty
     private int year;
 
     @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
