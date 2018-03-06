@@ -8,6 +8,7 @@ public class Breaking {
     private Long id;
     private Date date;
     private Long milage;
+    private Unit unit;
     private List<FixProblem> fixProblemList;
 
     public Long getId() {
