@@ -9,7 +9,7 @@ public class Part {
     private Date dateOfPurchase;
     private Date dateOfInstal;
     private boolean isInstaled;
-    private Truck truck;
+    private Unit unit;
     private Long milage;
 
     public Part(){}
@@ -59,12 +59,12 @@ public class Part {
         isInstaled = instaled;
     }
 
-    public Truck getTruck() {
-        return truck;
+    public Unit getUnit() {
+        return unit;
     }
 
-    public void setTruck(Truck truck) {
-        this.truck = truck;
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 
     public Long getMilage() {

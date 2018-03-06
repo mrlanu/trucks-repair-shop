@@ -2,21 +2,23 @@ package com.lanu.trucks_repair_shop.entities;
 
 import java.util.List;
 
-public class Truck {
+public class Unit {
 
     private Long vinNumber;
-    private int unitNumber;
+    private String kind;
+    private int number;
     private int year;
 
     private List<Part> partList;
 
     private List<Breaking> breakingList;
 
-    public Truck() {}
+    public Unit(){}
 
-    public Truck(Long vinNumber, int unitNumber, int year) {
+    public Unit(Long vinNumber, String kind, int number, int year) {
         this.vinNumber = vinNumber;
-        this.unitNumber = unitNumber;
+        this.kind = kind;
+        this.number = number;
         this.year = year;
     }
 
@@ -28,12 +30,20 @@ public class Truck {
         this.vinNumber = vinNumber;
     }
 
-    public int getUnitNumber() {
-        return unitNumber;
+    public String getKind() {
+        return kind;
     }
 
-    public void setUnitNumber(int unitNumber) {
-        this.unitNumber = unitNumber;
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     public int getYear() {
