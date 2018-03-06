@@ -1,15 +1,27 @@
 package com.lanu.trucks_repair_shop.entities;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class Part {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty
     private String name;
     private Date dateOfPurchase;
     private Date dateOfInstal;
     private boolean isInstaled;
+
+    @ManyToOne
+    @JoinColumn(name = "UNIT_ID")
     private Unit unit;
+
     private Long milage;
 
     public Part(){}

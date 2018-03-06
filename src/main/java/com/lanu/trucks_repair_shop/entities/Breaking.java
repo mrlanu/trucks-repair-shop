@@ -1,14 +1,24 @@
 package com.lanu.trucks_repair_shop.entities;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
+@Entity
 public class Breaking {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private Date date;
     private Long milage;
+
+    @ManyToOne
+    @JoinColumn(name = "UNIT_ID")
     private Unit unit;
+
+    @OneToMany(mappedBy = "breaking", cascade = CascadeType.ALL)
     private List<FixProblem> fixProblemList;
 
     public Long getId() {
