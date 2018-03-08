@@ -8,5 +8,5 @@ public interface UnitService {
 
     void save(Unit unit);
 
-    List<Unit> findByType(String type);
+    List<Unit> findByTypeLike(String type);
 }

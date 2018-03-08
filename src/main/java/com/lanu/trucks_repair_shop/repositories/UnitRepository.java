@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface UnitRepository extends JpaRepository<Unit, Long> {
 
-    List<Unit> findByType(String type);
+    List<Unit> findByTypeLike(String type);
 }

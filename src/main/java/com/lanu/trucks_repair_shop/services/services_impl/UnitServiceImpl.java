@@ -20,7 +20,7 @@ public class UnitServiceImpl implements UnitService {
     }
 
     @Override
-    public List<Unit> findByType(String type) {
-        return unitRepository.findByType(type);
+    public List<Unit> findByTypeLike(String type) {
+        return unitRepository.findByTypeLike("%" + type + "%");
     }
 }
