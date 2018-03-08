@@ -2,7 +2,6 @@ package com.lanu.trucks_repair_shop.entities;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 public class Breaking {
@@ -18,8 +17,13 @@ public class Breaking {
     @JoinColumn(name = "unit_vinNumber")
     private Unit unit;
 
-    @OneToMany(mappedBy = "breaking", cascade = CascadeType.ALL)
-    private List<FixProblem> fixProblemList;
+    public Breaking(){}
+
+    public Breaking(Date date, Long milage, Unit unit) {
+        this.date = date;
+        this.milage = milage;
+        this.unit = unit;
+    }
 
     public Long getId() {
         return id;
@@ -45,11 +49,11 @@ public class Breaking {
         this.milage = milage;
     }
 
-    public List<FixProblem> getFixProblemList() {
-        return fixProblemList;
+    public Unit getUnit() {
+        return unit;
     }
 
-    public void setFixProblemList(List<FixProblem> fixProblemList) {
-        this.fixProblemList = fixProblemList;
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 }

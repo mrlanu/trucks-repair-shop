@@ -3,7 +3,6 @@ package com.lanu.trucks_repair_shop.entities;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 public class Part {
@@ -14,9 +13,7 @@ public class Part {
 
     @NotEmpty
     private String name;
-    private Date dateOfPurchase;
-    private Date dateOfInstal;
-    private boolean isInstaled;
+    private String dateOfPurchase;
 
     @ManyToOne
     @JoinColumn(name = "unit_vinNumber")
@@ -26,9 +23,11 @@ public class Part {
 
     public Part(){}
 
-    public Part(String name, Date dateOfPurchase) {
+    public Part(String name, String dateOfPurchase, Unit unit, Long milage) {
         this.name = name;
         this.dateOfPurchase = dateOfPurchase;
+        this.unit = unit;
+        this.milage = milage;
     }
 
     public Long getId() {
@@ -47,30 +46,6 @@ public class Part {
         this.name = name;
     }
 
-    public Date getDateOfPurchase() {
-        return dateOfPurchase;
-    }
-
-    public void setDateOfPurchase(Date dateOfPurchase) {
-        this.dateOfPurchase = dateOfPurchase;
-    }
-
-    public Date getDateOfInstal() {
-        return dateOfInstal;
-    }
-
-    public void setDateOfInstal(Date dateOfInstal) {
-        this.dateOfInstal = dateOfInstal;
-    }
-
-    public boolean isInstaled() {
-        return isInstaled;
-    }
-
-    public void setInstaled(boolean instaled) {
-        isInstaled = instaled;
-    }
-
     public Unit getUnit() {
         return unit;
     }
@@ -79,11 +54,30 @@ public class Part {
         this.unit = unit;
     }
 
+    public String getDateOfPurchase() {
+        return dateOfPurchase;
+    }
+
+    public void setDateOfPurchase(String dateOfPurchase) {
+        this.dateOfPurchase = dateOfPurchase;
+    }
+
     public Long getMilage() {
         return milage;
     }
 
     public void setMilage(Long milage) {
         this.milage = milage;
+    }
+
+    @Override
+    public String toString() {
+        return "Part{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", dateOfPurchase='" + dateOfPurchase + '\'' +
+                ", unit=" + unit.getVinNumber() +
+                ", milage=" + milage +
+                '}';
     }
 }

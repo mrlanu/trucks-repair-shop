@@ -21,35 +21,17 @@ import static org.junit.Assert.assertNotNull;
 @SpringBootTest
 public class TrucksRepairShopApplicationTests {
 
-	@Autowired
-	private UnitService unitService;
-
-	@Autowired
-	private PartService partService;
-
-	@Before
 	public void initDb(){
 
-		Unit theUnit = new Unit(new Long(12345678), "truck", 775, 2011);
-		unitService.createUnit(theUnit);
-
-		Part thePart = new Part("Tire", new Date());
-		Unit unit = unitService.findOne(12345678);
-		partService.createPart(thePart, unit);
 	}
 
 	@Test
 	public void testUnit(){
-		Unit unit = unitService.findOne(12345678);
-		assertNotNull(unit);
-		assertEquals(unit.getVinNumber(),new Long(12345678));
+
 	}
 
 	@Test
 	public void testPart(){
-		Unit unit = unitService.findOne(12345678);
-		List<Part> parts = partService.findUnitParts(unit);
-		assertNotNull(parts);
-	}
 
+	}
 }

@@ -1,7 +1,5 @@
 package com.lanu.trucks_repair_shop.entities;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -12,27 +10,33 @@ public class Unit {
     @Column(unique = true)
     private Long vinNumber;
 
-    private String kind;
-
     @Column(unique = true)
     private int number;
 
+    private String type;
+
+    private String make;
+
+    private String model;
+
     private int year;
+
+    public Unit(){}
+
+    public Unit(Long vinNumber, int number, String type, String make, String model, int year) {
+        this.vinNumber = vinNumber;
+        this.number = number;
+        this.type = type;
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
 
     @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
     private List<Part> partList;
 
     @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
     private List<Breaking> breakingList;
-
-    public Unit(){}
-
-    public Unit(Long vinNumber, String kind, int number, int year) {
-        this.vinNumber = vinNumber;
-        this.kind = kind;
-        this.number = number;
-        this.year = year;
-    }
 
     public Long getVinNumber() {
         return vinNumber;
@@ -42,20 +46,36 @@ public class Unit {
         this.vinNumber = vinNumber;
     }
 
-    public String getKind() {
-        return kind;
-    }
-
-    public void setKind(String kind) {
-        this.kind = kind;
-    }
-
     public int getNumber() {
         return number;
     }
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
     }
 
     public int getYear() {
@@ -80,5 +100,17 @@ public class Unit {
 
     public void setBreakingList(List<Breaking> breakingList) {
         this.breakingList = breakingList;
+    }
+
+    @Override
+    public String toString() {
+        return "Unit{" +
+                "vinNumber=" + vinNumber +
+                ", number=" + number +
+                ", type='" + type + '\'' +
+                ", make='" + make + '\'' +
+                ", model='" + model + '\'' +
+                ", year=" + year +
+                '}';
     }
 }
