@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+
+<div th:replace="common/header :: navbar"></div>
+
+    <div class="container">
+        <form class="mySpace">
+            <fieldset>
+                <div class="form-group">
+                    <label for="number">Trailer Number</label>
+                    <input type="text" class="form-control" th:value="${vehicle.number}" id="number"/>
+                </div>
+                <div class="form-group">
+                    <label for="vinNumber">VIN number</label>
+                    <input type="text" class="form-control" th:value="${vehicle.vinNumber}" id="vinNumber"/>
+                </div>
+                <div class="form-group">
+                    <label for="year">Year</label>
+                    <input type="text" class="form-control" th:value="${vehicle.year}" id="year"/>
+                </div>
+                <div class="form-group">
+                    <label for="make">Make</label>
+                    <input type="text" class="form-control" th:value="${vehicle.make}" id="make"/>
+                </div>
+                <div class="form-group">
+                    <label for="model">Model</label>
+                    <input type="text" class="form-control" th:value="${vehicle.model}" id="model"/>
+                </div>
+                <div class="form-group">
+                    <label for="length">Lenght</label>
+                    <input type="text" class="form-control" th:value="${vehicle.length}" id="length"/>
+                </div>
+                <div class="form-group">
+                    <label for="reefer">Reefer</label>
+                    <input type="text" class="form-control" th:value="${vehicle.reefer}" id="reefer"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+
+<div th:replace="common/header :: body-bottom-scripts"></div>
+
+</body>
+</html>

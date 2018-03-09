@@ -27,7 +27,6 @@
                     <th>Model</th>
                     <th>Year</th>
                     <th></th>
-                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -38,8 +37,7 @@
                     <td th:text="${vehicle.make}"></td>
                     <td th:text="${vehicle.model}"></td>
                     <td th:text="${vehicle.year}"></td>
-                    <td align="center"><a th:href="@{/addPart(vin=${vehicle.vinNumber})}" class="btn btn-dark btn-sm">Add part</a> </td>
-                    <td align="center"><a th:href="@{/addBreaking(vin=${vehicle.vinNumber})}" class="btn btn-dark btn-sm">Add breaking</a> </td>
+                    <td align="center"><a th:href="@{/showVehicle(number=${vehicle.number}, type=${vehicle.type})}" class="btn btn-dark btn-sm">Show</a> </td>
                 </tr>
                 </tbody>
             </table>
