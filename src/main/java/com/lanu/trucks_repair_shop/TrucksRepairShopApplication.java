@@ -36,12 +36,12 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		Truck truck4 = new Truck("Cummins", 779, "FMI67342", "Truck", "Volvo", "670", 2015);
 		Truck truck5 = new Truck("Cummins", 802, "FX56P872", "Truck", "Volvo", "780", 2018);
 
-		Trailer trailer1 = new Trailer(1025, "HTP67TY7", "Trailer", "GreyDane", "", 2003, 53, true);
-		Trailer trailer2 = new Trailer(1009, "87654321", "Trailer", "Utility", "", 2005, 53, true);
-		Trailer trailer3 = new Trailer(1118, "7378TY89", "Trailer", "GreyDane", "", 2005, 53, false);
-		Trailer trailer4 = new Trailer(1010, "WE782395", "Trailer", "Utility", "", 2009, 53, true);
-		Trailer trailer5 = new Trailer(1011, "PUY78673", "Trailer", "GreyDane", "", 2011, 53, false);
-		Trailer trailer6 = new Trailer(1001, "HYW98HYI", "Trailer", "Wabash", "", 2003, 53, true);
+		Trailer trailer1 = new Trailer(1025, "HTP67TY7", "Trailer", "Great Dane", "model 02", 2003, 53, true);
+		Trailer trailer2 = new Trailer(1009, "87654321", "Trailer", "Utility", "3000 R", 2005, 53, true);
+		Trailer trailer3 = new Trailer(1118, "7378TY89", "Trailer", "Great Dane", "model 02", 2005, 53, false);
+		Trailer trailer4 = new Trailer(1010, "WE782395", "Trailer", "Utility", "3000 R", 2009, 53, true);
+		Trailer trailer5 = new Trailer(1011, "PUY78673", "Trailer", "Great Dane", "model 01", 2011, 53, false);
+		Trailer trailer6 = new Trailer(1001, "HYW98HYI", "Trailer", "Wabash", "53X102", 2003, 53, true);
 
 		Part part1 = new Part("Tire", "03/07/2018", 966000);
 		Part part2 = new Part("Hose", "01/17/2018", 113897);
