@@ -28,8 +28,4 @@ public class Truck extends Vehicle {
         this.engineType = engineType;
     }
 
-    @Override
-    public String toString() {
-        return super.toString() + "Engine type - " + engineType;
-    }
 }

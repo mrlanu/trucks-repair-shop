@@ -1,6 +1,7 @@
 package com.lanu.trucks_repair_shop.entities;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,6 +15,7 @@ public class Vehicle {
     private Integer number;
 
     @Column(unique = true)
+    @NotEmpty
     @Length(min = 8)
     private String vinNumber;
 
