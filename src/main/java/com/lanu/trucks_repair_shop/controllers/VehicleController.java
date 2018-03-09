@@ -26,11 +26,11 @@ public class VehicleController {
         if (type.equalsIgnoreCase("Truck")){
             Truck truck = (Truck) vehicleService.findByNumber(number);
             model.addAttribute("vehicle", truck);
-            return "/truck";
+            return "truck";
         }else {
             Trailer trailer = (Trailer) vehicleService.findByNumber(number);
             model.addAttribute("vehicle", trailer);
-            return "/trailer";
+            return "trailer";
         }
     }
 }
