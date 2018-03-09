@@ -26,37 +26,57 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... strings) throws Exception {
-		Truck truck = new Truck("Cummins",
-						775,
-						"12345678",
-						"Truck",
-						"Volvo",
-						"780",
-						2011);
+		init();
+	}
 
-		Trailer trailer = new Trailer(
-						1025,
-						"87654321",
-						"Trailer",
-						"GreyDane",
-						"",
-						2003,
-						53,
-						true);
+	private void init(){
+		Truck truck1 = new Truck("Cummins", 775, "123PI678", "Truck", "Volvo", "780", 2011);
+		Truck truck2 = new Truck("Cummins", 777, "RTI45361", "Truck", "Volvo", "670", 2007);
+		Truck truck3 = new Truck("Cummins", 800, "56238586", "Truck", "Volvo", "670", 2017);
+		Truck truck4 = new Truck("Cummins", 779, "FMI67342", "Truck", "Volvo", "670", 2015);
+		Truck truck5 = new Truck("Cummins", 802, "FX56P872", "Truck", "Volvo", "780", 2018);
 
-		Part part = new Part("Tire", "03/07/2018", 966000);
+		Trailer trailer1 = new Trailer(1025, "HTP67TY7", "Trailer", "GreyDane", "", 2003, 53, true);
+		Trailer trailer2 = new Trailer(1009, "87654321", "Trailer", "Utility", "", 2005, 53, true);
+		Trailer trailer3 = new Trailer(1118, "7378TY89", "Trailer", "GreyDane", "", 2005, 53, false);
+		Trailer trailer4 = new Trailer(1010, "WE782395", "Trailer", "Utility", "", 2009, 53, true);
+		Trailer trailer5 = new Trailer(1011, "PUY78673", "Trailer", "GreyDane", "", 2011, 53, false);
+		Trailer trailer6 = new Trailer(1001, "HYW98HYI", "Trailer", "Wabash", "", 2003, 53, true);
 
-		Breaking breaking = new Breaking("03/07/2018", 966700);
-
-		vehicleService.save(truck);
-		vehicleService.save(trailer);
-		partService.createPart(part, truck);
-		breakingService.createBreaking(breaking, truck);
+		Part part1 = new Part("Tire", "03/07/2018", 966000);
+		Part part2 = new Part("Hose", "01/17/2018", 113897);
+		Part part3 = new Part("Hud", "01/07/2018", 500897);
+		Part part4 = new Part("Rim", "03/04/2018", 480783);
 
 
+		Breaking breaking1 = new Breaking("03/07/2018", 863567);
+		Breaking breaking2 = new Breaking("01/03/2018", 380978);
+		Breaking breaking3 = new Breaking("01/07/2018", 345345);
+		Breaking breaking4 = new Breaking("12/07/2017", 966700);
+
+		vehicleService.save(truck1);
+		vehicleService.save(truck2);
+		vehicleService.save(truck3);
+		vehicleService.save(truck4);
+		vehicleService.save(truck5);
+
+		vehicleService.save(trailer1);
+		vehicleService.save(trailer2);
+		vehicleService.save(trailer3);
+		vehicleService.save(trailer4);
+		vehicleService.save(trailer5);
+		vehicleService.save(trailer6);
+
+		partService.createPart(part1, truck2);
+		partService.createPart(part2, truck1);
+		partService.createPart(part3, truck5);
+		partService.createPart(part4, truck2);
+
+		breakingService.createBreaking(breaking1, truck1);
+		breakingService.createBreaking(breaking2, truck5);
+		breakingService.createBreaking(breaking3, truck2);
+		breakingService.createBreaking(breaking4, truck2);
 
 
-		/*Truck truck1 = (Truck) vehicleService.findByNumber(new Integer(775));
-		System.out.println(truck1);*/
 	}
 }
