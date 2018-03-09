@@ -9,32 +9,32 @@ public class Part {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @NotEmpty
     private String name;
+
     private String dateOfPurchase;
 
     @ManyToOne
-    @JoinColumn(name = "unit_vinNumber")
-    private Unit unit;
+    @JoinColumn(name = "vehicle_number")
+    private Vehicle vehicle;
 
-    private Long milage;
+    private int milage;
 
     public Part(){}
 
-    public Part(String name, String dateOfPurchase, Unit unit, Long milage) {
+    public Part(String name, String dateOfPurchase, int milage) {
         this.name = name;
         this.dateOfPurchase = dateOfPurchase;
-        this.unit = unit;
         this.milage = milage;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -46,12 +46,12 @@ public class Part {
         this.name = name;
     }
 
-    public Unit getUnit() {
-        return unit;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public String getDateOfPurchase() {
@@ -62,22 +62,11 @@ public class Part {
         this.dateOfPurchase = dateOfPurchase;
     }
 
-    public Long getMilage() {
+    public int getMilage() {
         return milage;
     }
 
-    public void setMilage(Long milage) {
+    public void setMilage(int milage) {
         this.milage = milage;
-    }
-
-    @Override
-    public String toString() {
-        return "Part{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", dateOfPurchase='" + dateOfPurchase + '\'' +
-                ", unit=" + unit.getVinNumber() +
-                ", milage=" + milage +
-                '}';
     }
 }

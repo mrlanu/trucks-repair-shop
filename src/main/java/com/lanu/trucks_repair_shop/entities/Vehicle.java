@@ -1,17 +1,21 @@
 package com.lanu.trucks_repair_shop.entities;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Unit {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Vehicle {
 
     @Id
     @Column(unique = true)
-    private Long vinNumber;
+    private Integer number;
 
     @Column(unique = true)
-    private int number;
+    @Length(min = 8)
+    private String vinNumber;
 
     private String type;
 
@@ -21,37 +25,37 @@ public class Unit {
 
     private int year;
 
-    public Unit(){}
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    private List<Part> partList;
 
-    public Unit(Long vinNumber, int number, String type, String make, String model, int year) {
-        this.vinNumber = vinNumber;
+    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    private List<Breaking> breakingList;
+
+    public Vehicle(){}
+
+    public Vehicle(Integer number, String vinNumber, String type, String make, String model, int year) {
         this.number = number;
+        this.vinNumber = vinNumber;
         this.type = type;
         this.make = make;
         this.model = model;
         this.year = year;
     }
 
-    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
-    private List<Part> partList;
-
-    @OneToMany(mappedBy = "unit", cascade = CascadeType.ALL)
-    private List<Breaking> breakingList;
-
-    public Long getVinNumber() {
-        return vinNumber;
-    }
-
-    public void setVinNumber(Long vinNumber) {
-        this.vinNumber = vinNumber;
-    }
-
-    public int getNumber() {
+    public Integer getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(Integer number) {
         this.number = number;
+    }
+
+    public String getVinNumber() {
+        return vinNumber;
+    }
+
+    public void setVinNumber(String vinNumber) {
+        this.vinNumber = vinNumber;
     }
 
     public String getType() {
@@ -86,27 +90,11 @@ public class Unit {
         this.year = year;
     }
 
-    public List<Part> getPartList() {
-        return partList;
-    }
-
-    public void setPartList(List<Part> partList) {
-        this.partList = partList;
-    }
-
-    public List<Breaking> getBreakingList() {
-        return breakingList;
-    }
-
-    public void setBreakingList(List<Breaking> breakingList) {
-        this.breakingList = breakingList;
-    }
-
     @Override
     public String toString() {
-        return "Unit{" +
-                "vinNumber=" + vinNumber +
-                ", number=" + number +
+        return "Vehicle{" +
+                "number=" + number +
+                ", vinNumber='" + vinNumber + '\'' +
                 ", type='" + type + '\'' +
                 ", make='" + make + '\'' +
                 ", model='" + model + '\'' +

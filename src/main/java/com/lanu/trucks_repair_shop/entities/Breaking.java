@@ -8,52 +8,51 @@ public class Breaking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    private Date date;
-    private Long milage;
+    private String date;
+    private int milage;
 
     @ManyToOne
-    @JoinColumn(name = "unit_vinNumber")
-    private Unit unit;
+    @JoinColumn(name = "vehicle_number")
+    private Vehicle vehicle;
 
     public Breaking(){}
 
-    public Breaking(Date date, Long milage, Unit unit) {
+    public Breaking(String date, int milage) {
         this.date = date;
         this.milage = milage;
-        this.unit = unit;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Long getMilage() {
+    public int getMilage() {
         return milage;
     }
 
-    public void setMilage(Long milage) {
+    public void setMilage(int milage) {
         this.milage = milage;
     }
 
-    public Unit getUnit() {
-        return unit;
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }

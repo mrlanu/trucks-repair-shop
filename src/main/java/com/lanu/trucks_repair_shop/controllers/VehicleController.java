@@ -1,6 +1,6 @@
 package com.lanu.trucks_repair_shop.controllers;
 
-import com.lanu.trucks_repair_shop.services.UnitService;
+import com.lanu.trucks_repair_shop.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class UnitController {
+public class VehicleController {
 
     @Autowired
-    private UnitService unitService;
+    private VehicleService vehicleService;
 
-    @GetMapping("/unitsList")
-    public String unitsList(Model model, @RequestParam(defaultValue = "")String type){
-        model.addAttribute("unitsList", unitService.findByTypeLike(type));
-        return "unitsList";
+    @GetMapping("/vehiclesList")
+    public String unitsList(Model model){
+        model.addAttribute("vehiclesList", vehicleService.findAll());
+        return "vehiclesList";
     }
 }

@@ -1,7 +1,7 @@
 package com.lanu.trucks_repair_shop.services.services_impl;
 
 import com.lanu.trucks_repair_shop.entities.Part;
-import com.lanu.trucks_repair_shop.entities.Unit;
+import com.lanu.trucks_repair_shop.entities.Vehicle;
 import com.lanu.trucks_repair_shop.repositories.PartRepository;
 import com.lanu.trucks_repair_shop.services.PartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,8 @@ public class PartServiceImpl implements PartService {
     private PartRepository partRepository;
 
     @Override
-    public void createPart(Part part, Unit unit) {
-        part.setUnit(unit);
+    public void createPart(Part part, Vehicle vehicle) {
+        part.setVehicle(vehicle);
         partRepository.save(part);
     }
 
@@ -25,7 +25,7 @@ public class PartServiceImpl implements PartService {
         partRepository.save(part);
     }
 
-    public List<Part> findUnitParts(Unit unit){
-        return partRepository.findByUnit(unit);
+    public List<Part> findVehicleParts(Vehicle vehicle){
+        return partRepository.findByVehicle(vehicle);
     }
 }

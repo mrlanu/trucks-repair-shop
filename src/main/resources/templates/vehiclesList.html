@@ -20,8 +20,8 @@
             <table id="example" class="table table-hover table-striped">
                 <thead>
                 <tr>
-                    <th>VIN number</th>
                     <th>Unit number</th>
+                    <th>VIN number</th>
                     <th>Type</th>
                     <th>Make</th>
                     <th>Model</th>
@@ -31,15 +31,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="unit:${unitsList}">
-                    <td th:text="${unit.vinNumber}"></td>
-                    <td th:text="${unit.number}"></td>
-                    <td th:text="${unit.type}"></td>
-                    <td th:text="${unit.make}"></td>
-                    <td th:text="${unit.model}"></td>
-                    <td th:text="${unit.year}"></td>
-                    <td align="center"><a th:href="@{/addPart(vin=${unit.vinNumber})}" class="btn btn-dark btn-sm">Add part</a> </td>
-                    <td align="center"><a th:href="@{/addBreaking(vin=${unit.vinNumber})}" class="btn btn-dark btn-sm">Add breaking</a> </td>
+                <tr th:each="vehicle:${vehiclesList}">
+                    <td th:text="${vehicle.number}"></td>
+                    <td th:text="${vehicle.vinNumber}"></td>
+                    <td th:text="${vehicle.type}"></td>
+                    <td th:text="${vehicle.make}"></td>
+                    <td th:text="${vehicle.model}"></td>
+                    <td th:text="${vehicle.year}"></td>
+                    <td align="center"><a th:href="@{/addPart(vin=${vehicle.vinNumber})}" class="btn btn-dark btn-sm">Add part</a> </td>
+                    <td align="center"><a th:href="@{/addBreaking(vin=${vehicle.vinNumber})}" class="btn btn-dark btn-sm">Add breaking</a> </td>
                 </tr>
                 </tbody>
             </table>
