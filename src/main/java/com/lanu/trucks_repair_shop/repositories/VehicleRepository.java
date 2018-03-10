@@ -8,4 +8,5 @@ import java.util.List;
 public interface VehicleRepository extends JpaRepository<Vehicle, Integer> {
 
     Vehicle findByNumber(Integer number);
+
 }

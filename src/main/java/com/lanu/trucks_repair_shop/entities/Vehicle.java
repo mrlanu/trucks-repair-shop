@@ -1,9 +1,8 @@
 package com.lanu.trucks_repair_shop.entities;
 
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
@@ -12,11 +11,11 @@ public class Vehicle {
 
     @Id
     @Column(unique = true)
+    @NotNull
     private Integer number;
 
     @Column(unique = true)
-    @NotEmpty
-    @Length(min = 8)
+    @Pattern(regexp="[a-zA-Z0-9]{8}")
     private String vinNumber;
 
     private String type;
@@ -25,7 +24,8 @@ public class Vehicle {
 
     private String model;
 
-    private int year;
+    @Pattern(regexp = "^\\d{4}$")
+    private String year;
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
     private List<Part> partList;
@@ -35,7 +35,7 @@ public class Vehicle {
 
     public Vehicle(){}
 
-    public Vehicle(Integer number, String vinNumber, String type, String make, String model, int year) {
+    public Vehicle(Integer number, String vinNumber, String type, String make, String model, String year) {
         this.number = number;
         this.vinNumber = vinNumber;
         this.type = type;
@@ -84,23 +84,12 @@ public class Vehicle {
         this.model = model;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
-    @Override
-    public String toString() {
-        return "Vehicle{" +
-                "number=" + number +
-                ", vinNumber='" + vinNumber + '\'' +
-                ", type='" + type + '\'' +
-                ", make='" + make + '\'' +
-                ", model='" + model + '\'' +
-                ", year=" + year +
-                '}';
-    }
 }

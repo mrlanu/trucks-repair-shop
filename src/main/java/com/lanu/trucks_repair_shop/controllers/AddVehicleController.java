@@ -19,13 +19,19 @@ public class AddVehicleController {
 
     @GetMapping("/addNewTruck")
     public String addTruck(Model model){
-        model.addAttribute("truck", new Truck());
+        Truck truck = new Truck();
+        truck.setType("Truck");
+        model.addAttribute("truck", truck);
         return "addNewTruck";
     }
 
     @PostMapping("/addNewTruck")
     public String addNewTruckPost(@Valid Truck truck, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
+            return "addNewTruck";
+        }
+        if (vehicleService.isVehiclePresent(truck)){
+            model.addAttribute("exist", true);
             return "addNewTruck";
         }
         vehicleService.save(truck);

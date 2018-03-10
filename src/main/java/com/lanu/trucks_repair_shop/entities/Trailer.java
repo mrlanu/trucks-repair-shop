@@ -16,7 +16,7 @@ public class Trailer extends Vehicle{
                    String type,
                    String make,
                    String model,
-                   int year,
+                   String year,
                    int length,
                    boolean reefer) {
         super(number, vinNumber, type, make, model, year);
