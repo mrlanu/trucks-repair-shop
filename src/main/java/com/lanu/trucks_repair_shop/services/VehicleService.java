@@ -14,4 +14,6 @@ public interface VehicleService {
     List<Vehicle> findAll();
 
     boolean isVehiclePresent(Vehicle vehicle);
+
+    void deleteVehicle(Integer number);
 }

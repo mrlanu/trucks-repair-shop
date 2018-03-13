@@ -34,4 +34,9 @@ public class VehicleServiceImpl implements VehicleService{
     public boolean isVehiclePresent(Vehicle vehicle) {
         return vehicleRepository.findByNumber(vehicle.getNumber()) != null ? true:false;
     }
+
+    @Override
+    public void deleteVehicle(Integer number) {
+        vehicleRepository.delete(number);
+    }
 }

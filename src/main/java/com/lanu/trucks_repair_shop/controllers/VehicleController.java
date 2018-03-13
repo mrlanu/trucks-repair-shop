@@ -46,29 +46,31 @@ public class VehicleController {
 
     @GetMapping("/showFormForEditVehicle")
     public String showVehicle(@RequestParam("type") String type, @RequestParam("number") Integer number, Model model){
+
+        model.addAttribute("what", "edit");
+
         if (type.equalsIgnoreCase("Truck")){
             Truck truck = (Truck) vehicleService.findByNumber(number);
             model.addAttribute("truck", truck);
-            model.addAttribute("what", "edit");
             return "truck";
         }else {
             Trailer trailer = (Trailer) vehicleService.findByNumber(number);
             model.addAttribute("trailer", trailer);
-            model.addAttribute("what", "edit");
             return "trailer";
         }
     }
 
     @PostMapping("/saveTruck")
     public String addNewTruckPost(@Valid Truck truck, BindingResult bindingResult, @RequestParam("param") String what, Model model){
+
+        model.addAttribute("what", what);
+
         if (bindingResult.hasErrors()){
-            model.addAttribute("what", what);
             return "truck";
         }
         if (what.equalsIgnoreCase("new")) {
             if (vehicleService.isVehiclePresent(truck)) {
                 model.addAttribute("exist", true);
-                model.addAttribute("what", what);
                 return "truck";
             }
         }
@@ -79,19 +81,26 @@ public class VehicleController {
 
     @PostMapping("/saveTrailer")
     public String saveTrailer(@Valid Trailer trailer, BindingResult bindingResult, @RequestParam("param") String what, Model model){
+
+        model.addAttribute("what", what);
+
         if (bindingResult.hasErrors()){
-            model.addAttribute("what", what);
             return "trailer";
         }
         if (what.equalsIgnoreCase("new")) {
             if (vehicleService.isVehiclePresent(trailer)) {
                 model.addAttribute("exist", true);
-                model.addAttribute("what", what);
                 return "trailer";
             }
         }
         vehicleService.save(trailer);
 
+        return "redirect:/vehiclesList";
+    }
+
+    @GetMapping("/deleteVehicle")
+    public String deleteVehicle(@RequestParam("number") Integer number){
+        vehicleService.deleteVehicle(number);
         return "redirect:/vehiclesList";
     }
 }
