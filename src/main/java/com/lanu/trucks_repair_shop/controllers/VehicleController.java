@@ -30,23 +30,11 @@ public class VehicleController {
         Truck truck = new Truck();
         truck.setType("Truck");
         model.addAttribute("truck", truck);
+        model.addAttribute("what", "new");
         return "truck";
     }
 
-    @PostMapping("/saveTruck")
-    public String addNewTruckPost(@Valid Truck truck, BindingResult bindingResult, Model model){
-        if (bindingResult.hasErrors()){
-            return "truck";
-        }
-        if (vehicleService.isVehiclePresent(truck)){
-            model.addAttribute("exist", true);
-            return "truck";
-        }
-        vehicleService.save(truck);
-        return "redirect:/vehiclesList";
-    }
-
-    @GetMapping("/editVehicle")
+    @GetMapping("/showFormForEditVehicle")
     public String showVehicle(@RequestParam("type") String type, @RequestParam("number") Integer number, Model model){
         if (type.equalsIgnoreCase("Truck")){
             Truck truck = (Truck) vehicleService.findByNumber(number);
@@ -58,5 +46,23 @@ public class VehicleController {
             model.addAttribute("vehicle", trailer);
             return "trailer";
         }
+    }
+
+    @PostMapping("/saveTruck")
+    public String addNewTruckPost(@Valid Truck truck, BindingResult bindingResult, @RequestParam("param") String what, Model model){
+        if (bindingResult.hasErrors()){
+            model.addAttribute("what", what);
+            return "truck";
+        }
+        if (what.equalsIgnoreCase("new")) {
+            if (vehicleService.isVehiclePresent(truck)) {
+                model.addAttribute("exist", true);
+                model.addAttribute("what", what);
+                return "truck";
+            }
+        }
+        vehicleService.save(truck);
+
+        return "redirect:/vehiclesList";
     }
 }

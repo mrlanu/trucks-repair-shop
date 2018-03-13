@@ -37,8 +37,10 @@
                     <td th:text="${vehicle.make}"></td>
                     <td th:text="${vehicle.model}"></td>
                     <td th:text="${vehicle.year}"></td>
-                    <td align="center"><a th:href="@{/editVehicle(number=${vehicle.number}, type=${vehicle.type})}"
-                                          class="btn btn-dark btn-sm">Edit</a> </td>
+                    <td align="center">
+                        <a th:href="@{/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})}"
+                           class="btn btn-dark btn-sm">Edit</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>

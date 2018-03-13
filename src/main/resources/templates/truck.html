@@ -15,6 +15,10 @@
         </div>
         <form class="mySpace" th:action="@{/saveTruck}" th:object="${truck}" method="post">
             <fieldset>
+
+                <!-- We get this param from model for form action either edit or new truck-->
+                <input name="param" th:value="${what}" hidden>
+
                 <div class="form-group">
                     <label for="number">Truck Number</label>
                     <input type="text" class="form-control" th:field="*{number}" id="number"
