@@ -13,7 +13,7 @@
                 Vehicle with this number already exist.
             </p>
         </div>
-        <form class="mySpace" th:action="@{/saveTruck}" th:object="${truck}" method="post">
+        <form class="mySpace" th:action="@{/vehicles/saveTruck}" th:object="${truck}" method="post">
             <fieldset>
 
                 <!-- We get this param from model for form action either edit or new truck-->

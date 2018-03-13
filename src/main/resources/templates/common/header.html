@@ -8,8 +8,8 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <link rel="stylesheet" href="../../static/css/style.css" th:href="@{css/style.css}"/>
-    <link rel="stylesheet" href="../../static/css/sandstone/bootstrap.min.css" th:href="@{css/sandstone/bootstrap.min.css}"/>
+    <link rel="stylesheet" href="/static/css/style.css" th:href="@{/css/style.css}"/>
+    <link rel="stylesheet" href="/static/css/sandstone/bootstrap.min.css" th:href="@{/css/sandstone/bootstrap.min.css}"/>
     <link rel="stylesheet" href="/webjars/datatables/1.10.16/css/dataTables.bootstrap.min.css"/>
     <link rel="stylesheet" href="/webjars/datatables/1.10.16/css/jquery.dataTables.min.css"/>
 
@@ -34,15 +34,15 @@
                         <a class="nav-link" href="/login"><h5><small>Log in</small></h5></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/vehiclesList"><h5><small>Vehicles List</small></h5></a>
+                        <a class="nav-link" href="/vehicles/vehiclesList"><h5><small>Vehicles List</small></h5></a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#" id="themes"><h5><small>Add<i class="fas fa-angle-double-down" style="margin-left: 4px;"></i></small></h5><span class="caret"></span></a>
                         <div class="dropdown-menu" aria-labelledby="themes">
                             <a class="dropdown-item" href="../default/">Employee</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/showFormForNewTruck">Truck</a>
-                            <a class="dropdown-item" href="/showFormForNewTrailer">Trailer</a>
+                            <a class="dropdown-item" href="/vehicles/showFormForNewTruck">Truck</a>
+                            <a class="dropdown-item" href="/vehicles/showFormForNewTrailer">Trailer</a>
                             <a class="dropdown-item" href="../cyborg/">Other</a>
                         </div>
                     </li>

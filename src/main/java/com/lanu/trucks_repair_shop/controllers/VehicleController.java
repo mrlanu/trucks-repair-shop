@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/vehicles")
 public class VehicleController {
 
     @Autowired
@@ -76,7 +77,7 @@ public class VehicleController {
         }
         vehicleService.save(truck);
 
-        return "redirect:/vehiclesList";
+        return "redirect:/vehicles/vehiclesList";
     }
 
     @PostMapping("/saveTrailer")
@@ -95,12 +96,12 @@ public class VehicleController {
         }
         vehicleService.save(trailer);
 
-        return "redirect:/vehiclesList";
+        return "redirect:/vehicles/vehiclesList";
     }
 
     @GetMapping("/deleteVehicle")
     public String deleteVehicle(@RequestParam("number") Integer number){
         vehicleService.deleteVehicle(number);
-        return "redirect:/vehiclesList";
+        return "redirect:/vehicles/vehiclesList";
     }
 }
