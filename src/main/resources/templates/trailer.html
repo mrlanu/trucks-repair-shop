@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="common/header :: common-header"></head>
 
@@ -7,42 +7,60 @@
 
 <div th:replace="common/header :: navbar"></div>
 
-    <div class="container">
-        <form class="mySpace">
-            <fieldset>
-                <div class="form-group">
-                    <label for="number">Trailer Number</label>
-                    <input type="text" class="form-control" th:value="${vehicle.number}" id="number"/>
-                </div>
-                <div class="form-group">
-                    <label for="vinNumber">VIN number</label>
-                    <input type="text" class="form-control" th:value="${vehicle.vinNumber}" id="vinNumber"/>
-                </div>
-                <div class="form-group">
-                    <label for="year">Year</label>
-                    <input type="text" class="form-control" th:value="${vehicle.year}" id="year"/>
-                </div>
-                <div class="form-group">
-                    <label for="make">Make</label>
-                    <input type="text" class="form-control" th:value="${vehicle.make}" id="make"/>
-                </div>
-                <div class="form-group">
-                    <label for="model">Model</label>
-                    <input type="text" class="form-control" th:value="${vehicle.model}" id="model"/>
-                </div>
-                <div class="form-group">
-                    <label for="length">Lenght</label>
-                    <input type="text" class="form-control" th:value="${vehicle.length}" id="length"/>
-                </div>
-                <div class="form-group">
-                    <label for="reefer">Reefer</label>
-                    <input type="text" class="form-control" th:value="${vehicle.reefer}" id="reefer"/>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </fieldset>
-        </form>
+<div class="container mySpace" >
+    <div class="alert alert-danger" th:if="${exist}">
+        <p class="text text-center">
+            Vehicle with this number already exist.
+        </p>
     </div>
+    <form class="mySpace" th:action="@{/saveTrailer}" th:object="${trailer}" method="post">
+        <fieldset>
+
+            <!-- We get this param from model for form action either edit or new truck-->
+            <input name="param" th:value="${what}" hidden>
+
+            <div class="form-group">
+                <label for="number">Trailer Number</label>
+                <input type="text" class="form-control" th:field="*{number}" id="number"
+                       placeholder="E.g. 555" th:readonly="${what == 'edit'}"/>
+                <div class="text text-danger" th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></div>
+            </div>
+            <div class="form-group">
+                <label for="vinNumber">VIN number</label>
+                <input type="text" class="form-control" th:field="*{vinNumber}" id="vinNumber" placeholder="E.g. FB56VT78"/>
+                <div class="text text-danger" th:if="${#fields.hasErrors('vinNumber')}" th:errors="*{vinNumber}"></div>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <input type="text" class="form-control" th:field="*{year}" id="year" placeholder="E.g. 2011"/>
+                <div class="text text-danger" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></div>
+            </div>
+            <div class="form-group">
+                <label for="type">Type</label>
+                <input type="text" class="form-control" th:field="*{type}" id="type" readonly/>
+                <div class="text text-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
+            </div>
+            <div class="form-group">
+                <label for="make">Make</label>
+                <input type="text" class="form-control" th:field="*{make}" id="make" placeholder="E.g. Utility"/>
+            </div>
+            <div class="form-group">
+                <label for="model">Model</label>
+                <input type="text" class="form-control" th:field="*{model}" id="model" placeholder="E.g. 3000 R"/>
+            </div>
+            <div class="form-group">
+                <label for="length">Length</label>
+                <input type="text" class="form-control" th:field="*{length}" id="length" placeholder="E.g. 53"/>
+            </div>
+            <div class="form-group">
+                <label for="reefer">Reefer</label>
+                <input type="text" class="form-control" th:field="*{reefer}" id="reefer" placeholder="E.g. true"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary">SAVE</button>
+        </fieldset>
+    </form>
+</div>
 
 <div th:replace="common/header :: body-bottom-scripts"></div>
 

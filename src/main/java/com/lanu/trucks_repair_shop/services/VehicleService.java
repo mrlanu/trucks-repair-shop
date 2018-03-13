@@ -13,5 +13,5 @@ public interface VehicleService {
 
     List<Vehicle> findAll();
 
-    boolean isVehiclePresent(Truck truck);
+    boolean isVehiclePresent(Vehicle vehicle);
 }

@@ -31,7 +31,7 @@ public class VehicleServiceImpl implements VehicleService{
     }
 
     @Override
-    public boolean isVehiclePresent(Truck truck) {
-        return vehicleRepository.findByNumber(truck.getNumber()) != null ? true:false;
+    public boolean isVehiclePresent(Vehicle vehicle) {
+        return vehicleRepository.findByNumber(vehicle.getNumber()) != null ? true:false;
     }
 }
