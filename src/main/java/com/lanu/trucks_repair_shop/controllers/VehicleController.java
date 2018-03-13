@@ -54,6 +54,7 @@ public class VehicleController {
         }else {
             Trailer trailer = (Trailer) vehicleService.findByNumber(number);
             model.addAttribute("trailer", trailer);
+            model.addAttribute("what", "edit");
             return "trailer";
         }
     }
