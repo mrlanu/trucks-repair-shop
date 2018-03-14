@@ -27,6 +27,8 @@ public class Vehicle {
     @Pattern(regexp = "^\\d{4}$")
     private String year;
 
+    private boolean isBroken;
+
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
     private List<Part> partList;
 
@@ -92,4 +94,11 @@ public class Vehicle {
         this.year = year;
     }
 
+    public boolean isBroken() {
+        return isBroken;
+    }
+
+    public void setBroken(boolean broken) {
+        isBroken = broken;
+    }
 }
