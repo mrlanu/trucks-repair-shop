@@ -52,9 +52,15 @@
                 <label for="length">Length</label>
                 <input type="text" class="form-control" th:field="*{length}" id="length" placeholder="E.g. 53"/>
             </div>
+
             <div class="form-group">
-                <label for="reefer">Reefer</label>
-                <input type="text" class="form-control" th:field="*{reefer}" id="reefer" placeholder="E.g. true"/>
+                <label class="radio-inline">Is reefer &nbsp;</label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadio" id="reefer" th:field="*{reefer}" th:value="true"/>YES &nbsp;
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="inlineRadio" id="reefer2" th:field="*{reefer}" th:value="false"/>NO
+                </label>
             </div>
 
             <button type="submit" class="btn btn-primary">SAVE</button>
