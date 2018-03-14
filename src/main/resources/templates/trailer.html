@@ -54,14 +54,24 @@
             </div>
 
             <div class="form-group">
-                <label class="radio-inline">Is reefer &nbsp;</label>
-                <label class="radio-inline">
-                    <input type="radio" name="inlineRadio" id="reefer" th:field="*{reefer}" th:value="true"/>YES &nbsp;
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" name="inlineRadio" id="reefer2" th:field="*{reefer}" th:value="false"/>NO
-                </label>
+                <ul class="list-inline">
+                    <li class="list-inline-item">Is Reefer</li>
+                    <li class="list-inline-item" th:each="radioValue: ${singleSelectAllValues}">
+                        <input type="radio" th:field="*{reefer}" th:value="${radioValue}" />
+                        <label th:for="${#ids.prev('reefer')}" th:text="${radioValue}"></label>
+                    </li>
+                </ul>
             </div>
+
+            <!--<div class="form-group">-->
+                <!--<label class="radio-inline">Is reefer &nbsp;</label>-->
+                <!--<label class="radio-inline">-->
+                    <!--<input type="radio" name="inlineRadioOptions" id="reefer" th:field="*{reefer}" th:value="true">YES &nbsp;-->
+                <!--</label>-->
+                <!--<label class="radio-inline">-->
+                    <!--<input type="radio" name="inlineRadioOptions" id="reefer2" th:field="*{reefer}" th:value="false">NO-->
+                <!--</label>-->
+            <!--</div>-->
 
             <button type="submit" class="btn btn-primary">SAVE</button>
         </fieldset>
