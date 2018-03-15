@@ -33,6 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .inMemoryAuthentication()
                 .withUser("user").password("user").roles("USER")
                 .and()
-                .withUser("admin").password("admin").roles("ADMIN");
+                .withUser("driver").password("driver").roles("DRIVER")
+                .and()
+                .withUser("fargo").password("28335555").roles("ADMIN");
     }
 }
