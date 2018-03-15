@@ -22,7 +22,7 @@
                 <div class="form-group">
                     <label for="number">Truck Number</label>
                     <input type="text" class="form-control" th:field="*{number}" id="number"
-                           placeholder="E.g. 555" th:readonly="${what == 'edit'}"/>
+                           placeholder="E.g. 555" th:readonly="${what == 'edit'}" th:autofocus="true"/>
                     <div class="text text-danger" th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></div>
                 </div>
                 <div class="form-group">

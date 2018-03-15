@@ -10,4 +10,9 @@ public class IndexController {
     public String index(){
         return "redirect:/vehicles/vehiclesList";
     }
+
+    @GetMapping("/login")
+    public String showLoginForm(){
+        return "loginForm";
+    }
 }
