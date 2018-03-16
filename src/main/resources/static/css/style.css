@@ -8,3 +8,10 @@
 .btn-spacer{
     width: 200px;
 }
+
+.isDisabled {
+    color: currentColor;
+    display: inline-block;
+    pointer-events: none;
+    text-decoration: none;
+}

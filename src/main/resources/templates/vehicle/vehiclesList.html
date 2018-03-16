@@ -41,8 +41,8 @@
                         <td th:text="${vehicle.model}"></td>
                         <td th:text="${vehicle.year}"></td>
                         <td align="center">
-                            <a th:href="${vehicle.broken} ? @{/vehicles/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})} : @{'#'}"
-                               th:style="${vehicle.broken} ? 'color: red; font-weight: bold' : 'color: #4b4a4a'"
+                            <a th:href="${vehicle.broken} ? @{/breaking/breakingList(number=${vehicle.number}, type=${vehicle.type})} : @{'#'}"
+                               th:class="${vehicle.broken} ? 'btn btn-danger btn-sm' : 'isDisabled'"
                                th:text="${vehicle.broken} ? 'Yes' : 'No'"></a>
                         </td>
                         <td align="center">
