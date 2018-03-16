@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+
+<div th:replace="common/header :: navbar"></div>
+
+<div class="container mySpace">
+
+
+
+</div>
+
+<div th:replace="common/header :: body-bottom-scripts"></div>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable(
+            /* {"searching": false}*/
+        );
+    } );
+</script>
+
+</body>
+</html>

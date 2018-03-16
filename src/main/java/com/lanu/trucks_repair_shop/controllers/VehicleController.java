@@ -21,7 +21,7 @@ public class VehicleController {
     @GetMapping("/vehiclesList")
     public String unitsList(Model model){
         model.addAttribute("vehiclesList", vehicleService.findAll());
-        return "vehiclesList";
+        return "vehicle/vehiclesList";
     }
 
     @GetMapping("/showFormForNewTruck")
@@ -30,7 +30,7 @@ public class VehicleController {
         truck.setType("Truck");
         model.addAttribute("truck", truck);
         model.addAttribute("what", "new");
-        return "truck";
+        return "vehicle/truck";
     }
 
     @GetMapping("/showFormForNewTrailer")
@@ -39,7 +39,7 @@ public class VehicleController {
         trailer.setType("Trailer");
         model.addAttribute("trailer", trailer);
         model.addAttribute("what", "new");
-        return "trailer";
+        return "vehicle/trailer";
     }
 
     @GetMapping("/showFormForEditVehicle")
@@ -50,11 +50,11 @@ public class VehicleController {
         if (type.equalsIgnoreCase("Truck")){
             Truck truck = (Truck) vehicleService.findByNumber(number);
             model.addAttribute("truck", truck);
-            return "truck";
+            return "vehicle/truck";
         }else {
             Trailer trailer = (Trailer) vehicleService.findByNumber(number);
             model.addAttribute("trailer", trailer);
-            return "trailer";
+            return "vehicle/trailer";
         }
     }
 
@@ -64,12 +64,12 @@ public class VehicleController {
         model.addAttribute("what", what);
 
         if (bindingResult.hasErrors()){
-            return "truck";
+            return "vehicle/truck";
         }
         if (what.equalsIgnoreCase("new")) {
             if (vehicleService.isVehiclePresent(truck)) {
                 model.addAttribute("exist", true);
-                return "truck";
+                return "vehicle/truck";
             }
         }
         vehicleService.save(truck);
@@ -83,12 +83,12 @@ public class VehicleController {
         model.addAttribute("what", what);
 
         if (bindingResult.hasErrors()){
-            return "trailer";
+            return "vehicle/trailer";
         }
         if (what.equalsIgnoreCase("new")) {
             if (vehicleService.isVehiclePresent(trailer)) {
                 model.addAttribute("exist", true);
-                return "trailer";
+                return "vehicle/trailer";
             }
         }
         vehicleService.save(trailer);

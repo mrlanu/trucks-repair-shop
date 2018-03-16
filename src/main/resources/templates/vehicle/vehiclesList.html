@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+
+<div th:replace="common/header :: navbar"></div>
+
+<div class="container-fluid mySpace">
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+                <form action="/unitsList" class="form-inline">
+                    <div class="form-group mb-2">
+                        <input type="text" class="form-control" name="type" placeholder="Search Unit by type"/>
+                        <input type="submit" value="Search" class="btn btn-primary btn-dark"/>
+                    </div>
+
+                </form>
+
+                <table id="example" class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Unit #</th>
+                        <th>VIN #</th>
+                        <th>Type</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Broken</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="vehicle:${vehiclesList}" th:style="${vehicle.broken} ? 'color: red; font-weight: bold' : ''">
+                        <td th:text="${vehicle.number}"></td>
+                        <td th:text="${vehicle.vinNumber}"></td>
+                        <td th:text="${vehicle.type}"></td>
+                        <td th:text="${vehicle.make}"></td>
+                        <td th:text="${vehicle.model}"></td>
+                        <td th:text="${vehicle.year}"></td>
+                        <td align="center">
+                            <a th:href="${vehicle.broken} ? @{/vehicles/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})} : @{'#'}"
+                               th:style="${vehicle.broken} ? 'color: red; font-weight: bold' : 'color: #4b4a4a'"
+                               th:text="${vehicle.broken} ? 'Yes' : 'No'"></a>
+                        </td>
+                        <td align="center">
+                            <a th:href="@{/vehicles/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})}"
+                               class="btn btn-dark btn-sm">Edit</a>
+                        </td>
+                        <td align="center">
+                            <a th:href="@{/vehicles/deleteVehicle(number=${vehicle.number})}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/header :: body-bottom-scripts"></div>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable(
+           /* {"searching": false}*/
+        );
+    } );
+</script>
+
+</body>
+</html>
