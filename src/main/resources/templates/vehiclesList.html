@@ -20,8 +20,8 @@
             <table id="example" class="table table-hover table-striped">
                 <thead>
                 <tr>
-                    <th>Unit number</th>
-                    <th>VIN number</th>
+                    <th>Unit #</th>
+                    <th>VIN #</th>
                     <th>Type</th>
                     <th>Make</th>
                     <th>Model</th>
@@ -40,7 +40,7 @@
                     <td th:text="${vehicle.model}"></td>
                     <td th:text="${vehicle.year}"></td>
                     <td align="center">
-                        <a th:href="@{/vehicles/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})}"
+                        <a th:href="${vehicle.broken} ? @{/vehicles/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})} : @{'#'}"
                            th:style="${vehicle.broken} ? 'color: red; font-weight: bold' : 'color: #4b4a4a'"
                            th:text="${vehicle.broken} ? 'Yes' : 'No'"></a>
                     </td>
