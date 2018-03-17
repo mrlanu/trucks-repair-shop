@@ -1,5 +1,6 @@
 package com.lanu.trucks_repair_shop.domain;
 
+import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;

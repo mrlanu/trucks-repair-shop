@@ -15,7 +15,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                .authorizeRequests().antMatchers("/", "/register", "h2-console/**", "/css/**", "/webjars/**").permitAll()
+                .authorizeRequests().antMatchers("/", "/register", "/h2-console/**", "/css/**", "/webjars/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/vehicles/vehiclesList")

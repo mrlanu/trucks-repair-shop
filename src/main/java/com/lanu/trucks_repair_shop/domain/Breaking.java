@@ -1,5 +1,7 @@
 package com.lanu.trucks_repair_shop.domain;
 
+import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
+
 import javax.persistence.*;
 
 @Entity

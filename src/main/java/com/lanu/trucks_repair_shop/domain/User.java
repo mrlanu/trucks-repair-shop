@@ -1,12 +1,10 @@
 package com.lanu.trucks_repair_shop.domain;
 
-import javax.persistence.FetchType;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class User extends AbstractDomainClass {
 
     private String username;
@@ -18,7 +16,8 @@ public class User extends AbstractDomainClass {
     private Boolean enabled = true;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable
+    @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "user_id"),
+     inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles = new ArrayList<>();
 
     private Integer failedLoginAttempts = 0;

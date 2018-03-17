@@ -1,4 +1,7 @@
-package com.lanu.trucks_repair_shop.domain;
+package com.lanu.trucks_repair_shop.domain.vehicle;
+
+import com.lanu.trucks_repair_shop.domain.Breaking;
+import com.lanu.trucks_repair_shop.domain.Part;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
