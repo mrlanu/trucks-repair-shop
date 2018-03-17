@@ -3,6 +3,7 @@ package com.lanu.trucks_repair_shop.domain;
 import javax.persistence.*;
 import java.util.Date;
 
+@MappedSuperclass
 public abstract class AbstractDomainClass implements DomainObject{
 
     @Id
