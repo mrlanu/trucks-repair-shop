@@ -1,6 +1,6 @@
 package com.lanu.trucks_repair_shop.controllers;
 
-import com.lanu.trucks_repair_shop.entities.Vehicle;
+import com.lanu.trucks_repair_shop.domain.Vehicle;
 import com.lanu.trucks_repair_shop.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

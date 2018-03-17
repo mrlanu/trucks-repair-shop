@@ -1,7 +1,6 @@
-package com.lanu.trucks_repair_shop.entities;
+package com.lanu.trucks_repair_shop.domain;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 public class Breaking {

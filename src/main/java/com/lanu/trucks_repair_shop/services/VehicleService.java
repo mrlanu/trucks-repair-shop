@@ -1,7 +1,6 @@
 package com.lanu.trucks_repair_shop.services;
 
-import com.lanu.trucks_repair_shop.entities.Truck;
-import com.lanu.trucks_repair_shop.entities.Vehicle;
+import com.lanu.trucks_repair_shop.domain.Vehicle;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.lanu.trucks_repair_shop.entities;
+package com.lanu.trucks_repair_shop.domain;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

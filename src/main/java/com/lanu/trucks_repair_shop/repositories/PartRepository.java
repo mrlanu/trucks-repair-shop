@@ -1,7 +1,7 @@
 package com.lanu.trucks_repair_shop.repositories;
 
-import com.lanu.trucks_repair_shop.entities.Part;
-import com.lanu.trucks_repair_shop.entities.Vehicle;
+import com.lanu.trucks_repair_shop.domain.Part;
+import com.lanu.trucks_repair_shop.domain.Vehicle;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

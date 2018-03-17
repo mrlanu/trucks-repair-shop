@@ -1,7 +1,6 @@
 package com.lanu.trucks_repair_shop.services.services_impl;
 
-import com.lanu.trucks_repair_shop.entities.Truck;
-import com.lanu.trucks_repair_shop.entities.Vehicle;
+import com.lanu.trucks_repair_shop.domain.Vehicle;
 import com.lanu.trucks_repair_shop.repositories.VehicleRepository;
 import com.lanu.trucks_repair_shop.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;

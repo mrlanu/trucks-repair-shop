@@ -1,6 +1,6 @@
 package com.lanu.trucks_repair_shop;
 
-import com.lanu.trucks_repair_shop.entities.*;
+import com.lanu.trucks_repair_shop.domain.*;
 import com.lanu.trucks_repair_shop.services.BreakingService;
 import com.lanu.trucks_repair_shop.services.PartService;
 import com.lanu.trucks_repair_shop.services.VehicleService;
