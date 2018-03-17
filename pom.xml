@@ -98,6 +98,19 @@
 			<artifactId>font-awesome</artifactId>
 			<version>5.0.6</version>
 		</dependency>
+
+		<!--encryption lib-->
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt</artifactId>
+			<version>1.9.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jasypt</groupId>
+			<artifactId>jasypt-springsecurity3</artifactId>
+			<version>1.9.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
