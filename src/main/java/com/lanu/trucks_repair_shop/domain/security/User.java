@@ -15,12 +15,10 @@ public class User extends AbstractDomainClass implements UserDetails{
 
     private boolean enabled = true;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "user_id"),
      inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles = new ArrayList<>();
-
-    private Integer failedLoginAttempts = 0;
 
     public String getUsername() {
         return username;
@@ -58,24 +56,13 @@ public class User extends AbstractDomainClass implements UserDetails{
         if(!this.roles.contains(role)){
             this.roles.add(role);
         }
-
-        if(!role.getUsers().contains(this)){
-            role.getUsers().add(this);
-        }
     }
 
     public void removeRole(Role role){
         this.roles.remove(role);
-        role.getUsers().remove(this);
     }
 
-    public Integer getFailedLoginAttempts() {
-        return failedLoginAttempts;
-    }
-
-    public void setFailedLoginAttempts(Integer failedLoginAttempts) {
-        this.failedLoginAttempts = failedLoginAttempts;
-    }
+    // Implement UserDetails
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -102,5 +89,19 @@ public class User extends AbstractDomainClass implements UserDetails{
     @Override
     public boolean isEnabled() {
         return enabled;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        User user = (User) object;
+        return Objects.equals(username, user.username);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(username);
     }
 }

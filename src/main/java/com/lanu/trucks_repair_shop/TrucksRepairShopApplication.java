@@ -1,12 +1,13 @@
 package com.lanu.trucks_repair_shop;
 
 import com.lanu.trucks_repair_shop.domain.*;
+import com.lanu.trucks_repair_shop.domain.security.Role;
 import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.domain.vehicle.Trailer;
 import com.lanu.trucks_repair_shop.domain.vehicle.Truck;
 import com.lanu.trucks_repair_shop.services.BreakingService;
 import com.lanu.trucks_repair_shop.services.PartService;
-import com.lanu.trucks_repair_shop.services.UserService;
+import com.lanu.trucks_repair_shop.services.security_services.UserService;
 import com.lanu.trucks_repair_shop.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -88,10 +89,23 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		breakingService.createBreaking(breaking3, truck2);
 		breakingService.createBreaking(breaking4, truck2);
 
-		User user = new User();
-		user.setUsername("fargo");
-		user.setPassword("28335555");
-		userService.createUser(user);
+		User userAdmin = new User();
+		userAdmin.setUsername("fargo");
+		userAdmin.setPassword("28335555");
+		userAdmin.addRole(new Role("ADMIN"));
+		userService.createUser(userAdmin);
+
+		User userDriver = new User();
+		userDriver.setUsername("driver");
+		userDriver.setPassword("driver");
+		userDriver.addRole(new Role("DRIVER"));
+		userService.createUser(userDriver);
+
+		User userUser = new User();
+		userUser.setUsername("user");
+		userUser.setPassword("user");
+		userUser.addRole(new Role("USER"));
+		userService.createUser(userUser);
 
 
 

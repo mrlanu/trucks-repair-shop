@@ -1,6 +1,6 @@
 package com.lanu.trucks_repair_shop.config;
 
-import com.lanu.trucks_repair_shop.services.services_impl.UserSecurityService;
+import com.lanu.trucks_repair_shop.services.services_impl.security_services_impl.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package com.lanu.trucks_repair_shop.services;
+package com.lanu.trucks_repair_shop.services.security_services;
 
 import java.util.List;
 

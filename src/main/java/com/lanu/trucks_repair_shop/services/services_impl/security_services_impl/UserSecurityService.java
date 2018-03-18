@@ -1,7 +1,7 @@
-package com.lanu.trucks_repair_shop.services.services_impl;
+package com.lanu.trucks_repair_shop.services.services_impl.security_services_impl;
 
 import com.lanu.trucks_repair_shop.domain.security.User;
-import com.lanu.trucks_repair_shop.services.UserService;
+import com.lanu.trucks_repair_shop.services.security_services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="common/header :: common-header"></head>
 
@@ -28,8 +29,8 @@
                         <th>Model</th>
                         <th>Year</th>
                         <th>Broken</th>
-                        <th></th>
-                        <th></th>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                        <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -45,12 +46,13 @@
                                th:class="${vehicle.broken} ? 'btn btn-danger btn-sm' : 'isDisabled'"
                                th:text="${vehicle.broken} ? 'Yes' : 'No'"></a>
                         </td>
-                        <td align="center">
+                        <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">
                             <a th:href="@{/vehicles/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})}"
                                class="btn btn-dark btn-sm">Edit</a>
                         </td>
-                        <td align="center">
-                            <a th:href="@{/vehicles/deleteVehicle(number=${vehicle.number})}" class="btn btn-danger btn-sm">Delete</a>
+                        <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/vehicles/deleteVehicle(number=${vehicle.number})}"
+                               class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
                     </tbody>

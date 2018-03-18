@@ -1,4 +1,4 @@
-package com.lanu.trucks_repair_shop.repositories;
+package com.lanu.trucks_repair_shop.repositories.security_repositories;
 
 import com.lanu.trucks_repair_shop.domain.security.Role;
 import org.springframework.data.repository.CrudRepository;
