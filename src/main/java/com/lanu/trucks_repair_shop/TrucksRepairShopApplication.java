@@ -1,10 +1,12 @@
 package com.lanu.trucks_repair_shop;
 
 import com.lanu.trucks_repair_shop.domain.*;
+import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.domain.vehicle.Trailer;
 import com.lanu.trucks_repair_shop.domain.vehicle.Truck;
 import com.lanu.trucks_repair_shop.services.BreakingService;
 import com.lanu.trucks_repair_shop.services.PartService;
+import com.lanu.trucks_repair_shop.services.UserService;
 import com.lanu.trucks_repair_shop.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +15,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class TrucksRepairShopApplication implements CommandLineRunner{
+
+	@Autowired
+	private UserService userService;
 
 	@Autowired
 	private VehicleService vehicleService;
@@ -82,6 +87,12 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		breakingService.createBreaking(breaking2, truck5);
 		breakingService.createBreaking(breaking3, truck2);
 		breakingService.createBreaking(breaking4, truck2);
+
+		User user = new User();
+		user.setUsername("fargo");
+		user.setPassword("28335555");
+		userService.createUser(user);
+
 
 
 	}

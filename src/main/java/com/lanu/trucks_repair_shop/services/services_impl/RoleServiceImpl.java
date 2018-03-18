@@ -1,6 +1,6 @@
 package com.lanu.trucks_repair_shop.services.services_impl;
 
-import com.lanu.trucks_repair_shop.domain.Role;
+import com.lanu.trucks_repair_shop.domain.security.Role;
 import com.lanu.trucks_repair_shop.repositories.RoleRepository;
 import com.lanu.trucks_repair_shop.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
     @Service
-    @Profile("springdatajpa")
     public class RoleServiceImpl implements RoleService {
 
         @Autowired

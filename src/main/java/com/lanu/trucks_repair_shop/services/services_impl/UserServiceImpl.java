@@ -1,18 +1,23 @@
 package com.lanu.trucks_repair_shop.services.services_impl;
 
-import com.lanu.trucks_repair_shop.domain.User;
+import com.lanu.trucks_repair_shop.domain.security.Role;
+import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.repositories.UserRepository;
+import com.lanu.trucks_repair_shop.services.RoleService;
 import com.lanu.trucks_repair_shop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Profile("springdatajpa")
 public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private RoleService roleService;
 
     @Autowired
     private UserRepository userRepository;
@@ -49,5 +54,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Integer id) {
         userRepository.delete(id);
+    }
+
+    public void createUser(User user){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
+        Role userRole = new Role("USER");
+        List<Role> roles = new ArrayList<>();
+        roles.add(userRole);
+        user.setRoles(roles);
+        roleService.saveOrUpdate(userRole);
+        userRepository.save(user);
     }
 }

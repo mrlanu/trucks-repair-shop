@@ -1,4 +1,4 @@
-package com.lanu.trucks_repair_shop.domain;
+package com.lanu.trucks_repair_shop.domain.security;
 
 public interface DomainObject {
 

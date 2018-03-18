@@ -1,10 +1,10 @@
-package com.lanu.trucks_repair_shop.domain;
+package com.lanu.trucks_repair_shop.domain.security;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
-public abstract class AbstractDomainClass implements DomainObject{
+public abstract class AbstractDomainClass implements DomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
