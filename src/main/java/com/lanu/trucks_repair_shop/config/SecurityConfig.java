@@ -33,8 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/contact/**",
             "/error/**/*",
             "/h2-console/**",
-            "/user/showRegistrationForm",
-            "/register"
+            "/user/register"
     };
 
     @Override

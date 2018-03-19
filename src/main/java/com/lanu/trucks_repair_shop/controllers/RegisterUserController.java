@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/user")
-public class RegiController {
+public class RegisterUserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/showRegistrationForm")
+    @GetMapping("/register")
     public String showRegistrationForm(Model model){
         User user = new User();
         model.addAttribute("user", user);
@@ -26,10 +26,13 @@ public class RegiController {
     }
 
     @PostMapping("/register")
-    public String showRegistratifsvdsonForm(@ModelAttribute("user") User user, Model model){
+    public String registerUser(@ModelAttribute("user") User user, Model model){
         user.addRole(new Role("USER"));
         userService.createUser(user);
-        return "user/jjjj";
+        model.addAttribute("success", true);
+        User userForModel = userService.findByUsername(user.getUsername());
+        model.addAttribute("user", userForModel);
+        return "loginForm";
     }
 
 }

@@ -20,13 +20,16 @@
                 <div class="alert alert-secondary" th:if="${param.logout}">
                     <h5 class="text-center">Good bye</h5>
                 </div>
+                <div class="alert alert-success" th:if="${success}">
+                    <h5 class="text-center">Register success</h5>
+                </div>
                 <form th:action="@{/login}" method="post">
                     <div class="form-group">
                         <h2 class="text-center">Please Login</h2>
                     </div>
                     <div class="form-group">
                         <label for="email" class="form-control-label">Your name</label>
-                        <input type="text" class="form-control" id="email" name="username" th:autofocus="true"/>
+                        <input type="text" class="form-control" th:value="${user != null ? user.username : ''}" id="email" name="username" th:autofocus="true"/>
                     </div>
                     <div class="form-group">
                         <label for="password" class="form-control-label">Password</label>
