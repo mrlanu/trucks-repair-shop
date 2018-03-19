@@ -23,11 +23,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+    private static final String[] PUBLIC_MATCHERS = {
+            "/",
+            "/webjars/**",
+            "/css/**",
+            "/js/**",
+            "/images/**",
+            "/about/**",
+            "/contact/**",
+            "/error/**/*",
+            "/h2-console/**",
+            "/user/showRegistrationForm",
+            "/register"
+    };
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http
-                .authorizeRequests().antMatchers("/", "/register", "/h2-console/**", "/css/**", "/webjars/**").permitAll()
+                .authorizeRequests().antMatchers(PUBLIC_MATCHERS).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/vehicles/vehiclesList")
