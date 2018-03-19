@@ -1,5 +1,8 @@
 package com.lanu.trucks_repair_shop.domain.security;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -9,14 +12,18 @@ import java.util.*;
 @Entity
 public class User extends AbstractDomainClass implements UserDetails{
 
+    @NotEmpty
     private String username;
 
+    @NotEmpty
+    @Length(min = 5)
     private String password;
 
     private String firstName;
 
     private String lastName;
 
+    @Email
     private String email;
 
     private String phone;

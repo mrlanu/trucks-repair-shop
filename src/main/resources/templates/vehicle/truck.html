@@ -26,22 +26,22 @@
                         <label for="number">Truck Number</label>
                         <input type="text" class="form-control" th:field="*{number}" id="number"
                                placeholder="E.g. 555" th:readonly="${what == 'edit'}" th:autofocus="true"/>
-                        <div class="text text-danger" th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></div>
+                        <div class="badge badge-danger" th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></div>
                     </div>
                     <div class="form-group">
                         <label for="vinNumber">VIN number</label>
                         <input type="text" class="form-control" th:field="*{vinNumber}" id="vinNumber" placeholder="E.g. FB56VT78"/>
-                        <div class="text text-danger" th:if="${#fields.hasErrors('vinNumber')}" th:errors="*{vinNumber}"></div>
+                        <div class="badge badge-danger" th:if="${#fields.hasErrors('vinNumber')}" th:errors="*{vinNumber}"></div>
                     </div>
                     <div class="form-group">
                         <label for="year">Year</label>
                         <input type="text" class="form-control" th:field="*{year}" id="year" placeholder="E.g. 2011"/>
-                        <div class="text text-danger" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></div>
+                        <div class="badge badge-danger" th:if="${#fields.hasErrors('year')}" th:errors="*{year}"></div>
                     </div>
                     <div class="form-group">
                         <label for="type">Type</label>
                         <input type="text" class="form-control" th:field="*{type}" id="type" readonly/>
-                        <div class="text text-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
+                        <div class="badge badge-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
                     </div>
                     <div class="form-group">
                         <label for="make">Make</label>

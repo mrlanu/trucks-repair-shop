@@ -1,8 +1,20 @@
 *{
     font-size: 17px;
 }
+
+header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(/images/back.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
 .mySpace{
     padding-top: 20px;
+}
+
+.mySpaceForLogin{
+    padding-top: 80px;
 }
 
 .btn-spacer{

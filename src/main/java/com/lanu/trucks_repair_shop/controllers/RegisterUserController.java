@@ -1,15 +1,16 @@
 package com.lanu.trucks_repair_shop.controllers;
 
-import com.lanu.trucks_repair_shop.domain.security.Role;
 import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.services.security_services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/user")
@@ -26,12 +27,22 @@ public class RegisterUserController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@ModelAttribute("user") User user, Model model){
-        user.addRole(new Role("USER"));
+    public String registerUser(@Valid User user, BindingResult bindingResult, Model model){
+        if (bindingResult.hasErrors()){
+            return "user/userRegistrationForm";
+        }
+
+        if (userService.findByUsername(user.getUsername()) != null){
+            model.addAttribute("usernameExists", true);
+            return "user/userRegistrationForm";
+        }
+
         userService.createUser(user);
-        model.addAttribute("success", true);
+
         User userForModel = userService.findByUsername(user.getUsername());
         model.addAttribute("user", userForModel);
+        model.addAttribute("success", true);
+
         return "loginForm";
     }
 

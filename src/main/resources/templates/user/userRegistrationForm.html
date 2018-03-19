@@ -13,8 +13,37 @@
                 <hr />
             </div>
 
-            <div class="main-login main-center">
                 <form class="form-horizontal" method="post" th:object="${user}" th:action="@{/user/register}">
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label">Username</label>
+                        <div class="text text-danger" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+                        <span class="badge badge-danger" th:if="${usernameExists}"> <b>already exists</b></span>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fab fa-themeisle"></i></span>
+                            </div>
+                            <input type="text" class="form-control" th:field="*{username}" id="username" name="username"
+                                   roleId="username"  placeholder="Enter your Username" required="required" autofocus="autofocus"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="cols-sm-2 control-label">Password</label>
+                        <div class="badge badge-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-lock fa-lg"></i></span>
+                            </div>
+                            <input type="password" class="form-control" th:field="*{password}" id="password"
+                                   name="password" roleId="password"  placeholder="Enter your Password" required="required"/>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input id="showPassword" type="checkbox" />Show Password
+                            </label>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="firstName" class="cols-sm-2 control-label">First Name</label>
                         <div class="input-group mb-3">
@@ -22,7 +51,7 @@
                                 <span class="input-group-text"><i class="fa fa-user fa"></i></span>
                             </div>
                             <input type="text" class="form-control" th:field="*{firstName}" id="firstName"
-                                   name="firstName" roleId="firstname"  placeholder="Enter your first name" required="required" autofocus="autofocus"/>
+                                   name="firstName" roleId="firstname"  placeholder="Enter your first name" required="required"/>
                         </div>
                     </div>
 
@@ -50,42 +79,14 @@
 
                     <div class="form-group">
                         <label for="email" class="cols-sm-2 control-label">Your Email</label>
-                        <span class="text-danger" th:if="${emailExists}"> <b>already exists</b></span>
+                        <span class="badge badge-danger" th:if="${emailExists}"> <b>already exists</b></span>
+                        <div class="badge badge-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-envelope fa"></i></span>
                             </div>
                             <input type="text" class="form-control" th:field="*{email}" id="email"
                                    name="email" roleId="email"  placeholder="Enter your Email" required="required"/>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label">Username</label>
-                        <span class="text-danger" th:if="${usernameExists}"> <b>already exists</b></span>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fab fa-themeisle"></i></span>
-                            </div>
-                            <input type="text" class="form-control" th:field="*{username}" id="username"
-                                   name="username" roleId="username"  placeholder="Enter your Username" required="required"/>
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="password" class="cols-sm-2 control-label">Password</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-lock fa-lg"></i></span>
-                            </div>
-                            <input type="password" class="form-control" th:field="*{password}" id="password"
-                                   name="password" roleId="password"  placeholder="Enter your Password" required="required"/>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input id="showPassword" type="checkbox" />Show Password
-                            </label>
                         </div>
                     </div>
 
@@ -100,8 +101,6 @@
                     </div>
 
                 </form>
-            </div>
-
         </div>
 
         <div class="col-sm-4"></div>

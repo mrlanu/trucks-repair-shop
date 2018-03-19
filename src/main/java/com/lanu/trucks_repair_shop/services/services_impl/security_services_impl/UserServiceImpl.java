@@ -1,5 +1,6 @@
 package com.lanu.trucks_repair_shop.services.services_impl.security_services_impl;
 
+import com.lanu.trucks_repair_shop.domain.security.Role;
 import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.repositories.security_repositories.UserRepository;
 import com.lanu.trucks_repair_shop.services.security_services.RoleService;
@@ -57,7 +58,7 @@ public class UserServiceImpl implements UserService {
     public void createUser(User user){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
-
+        user.addRole(new Role("USER"));
         userRepository.save(user);
     }
 }
