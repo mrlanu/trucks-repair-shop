@@ -9,6 +9,11 @@ header {
     height: 100vh;
 }
 
+nav{
+    background: linear-gradient(to top, rgba(255,0,0,0), rgb(0, 0, 0));
+    height: 100px;
+}
+
 .mySpace{
     padding-top: 20px;
 }
