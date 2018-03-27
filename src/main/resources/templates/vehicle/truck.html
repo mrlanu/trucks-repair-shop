@@ -43,9 +43,12 @@
                         <input type="text" class="form-control" th:field="*{type}" id="type" readonly/>
                         <div class="badge badge-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="make">Make</label>
-                        <input type="text" class="form-control" th:field="*{make}" id="make" placeholder="E.g. Volvo"/>
+                    <div class="form-group" >
+                        <label for="makeName">Please choose the Make:</label>
+                        <select class="form-control" th:value="${makeName}" name="makeName" id="makeName" required="required">
+                            <option selected="selected" data-th-text="${makeName == null ? 'choose the Make' : makeName}"></option>
+                            <option data-th-each="eachMake : ${makeList}" data-th-text="${eachMake.name}"></option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="model">Model</label>

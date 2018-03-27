@@ -15,10 +15,9 @@ public class Truck extends Vehicle {
                  Integer number,
                  String vinNumber,
                  String type,
-                 String make,
                  String model,
                  String year) {
-        super(number, vinNumber, type, make, model, year);
+        super(number, vinNumber, type, model, year);
         this.engineType = engineType;
     }
 

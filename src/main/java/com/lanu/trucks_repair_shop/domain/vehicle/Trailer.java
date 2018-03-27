@@ -16,12 +16,11 @@ public class Trailer extends Vehicle {
     public Trailer(Integer number,
                    String vinNumber,
                    String type,
-                   String make,
                    String model,
                    String year,
                    int length,
                    boolean reefer) {
-        super(number, vinNumber, type, make, model, year);
+        super(number, vinNumber, type, model, year);
         this.length = length;
         this.reefer = reefer;
     }

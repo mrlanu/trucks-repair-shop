@@ -1,6 +1,8 @@
 package com.lanu.trucks_repair_shop.services.services_impl;
 
+import com.lanu.trucks_repair_shop.domain.vehicle.Make;
 import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
+import com.lanu.trucks_repair_shop.repositories.MakeRepository;
 import com.lanu.trucks_repair_shop.repositories.VehicleRepository;
 import com.lanu.trucks_repair_shop.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,12 @@ public class VehicleServiceImpl implements VehicleService{
     @Autowired
     private VehicleRepository vehicleRepository;
 
+    @Autowired
+    private MakeRepository makeRepository;
+
     @Override
-    public void save(Vehicle vehicle) {
+    public void save(Vehicle vehicle, String make) {
+        vehicle.setMake(makeRepository.findByName(make));
         vehicleRepository.save(vehicle);
     }
 

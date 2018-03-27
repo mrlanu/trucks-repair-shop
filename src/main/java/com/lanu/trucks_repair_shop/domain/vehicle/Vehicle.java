@@ -23,7 +23,8 @@ public class Vehicle {
 
     private String type;
 
-    private String make;
+    @OneToOne
+    private Make make;
 
     private String model;
 
@@ -40,11 +41,10 @@ public class Vehicle {
 
     public Vehicle(){}
 
-    public Vehicle(Integer number, String vinNumber, String type, String make, String model, String year) {
+    public Vehicle(Integer number, String vinNumber, String type, String model, String year) {
         this.number = number;
         this.vinNumber = vinNumber;
         this.type = type;
-        this.make = make;
         this.model = model;
         this.year = year;
     }
@@ -73,11 +73,11 @@ public class Vehicle {
         this.type = type;
     }
 
-    public String getMake() {
+    public Make getMake() {
         return make;
     }
 
-    public void setMake(String make) {
+    public void setMake(Make make) {
         this.make = make;
     }
 
