@@ -36,7 +36,7 @@ public class VehicleController {
         truck.setType("Truck");
         model.addAttribute("truck", truck);
         model.addAttribute("what", "new");
-        List<Make> makeList = makeRepository.findAll();
+        List<Make> makeList = makeRepository.findByTypeOfVehicle("Truck");
         model.addAttribute("makeList", makeList);
         return "vehicle/truck";
     }
@@ -47,6 +47,8 @@ public class VehicleController {
         trailer.setType("Trailer");
         model.addAttribute("trailer", trailer);
         model.addAttribute("what", "new");
+        List<Make> makeList = makeRepository.findByTypeOfVehicle("Trailer");
+        model.addAttribute("makeList", makeList);
         return "vehicle/trailer";
     }
 
@@ -59,12 +61,15 @@ public class VehicleController {
             Truck truck = (Truck) vehicleService.findByNumber(number);
             model.addAttribute("makeName", truck.getMake().getName());
             model.addAttribute("truck", truck);
-            List<Make> makeList = makeRepository.findAll();
+            List<Make> makeList = makeRepository.findByTypeOfVehicle("Truck");
             model.addAttribute("makeList", makeList);
             return "vehicle/truck";
         }else {
             Trailer trailer = (Trailer) vehicleService.findByNumber(number);
+            model.addAttribute("makeName", trailer.getMake().getName());
             model.addAttribute("trailer", trailer);
+            List<Make> makeList = makeRepository.findByTypeOfVehicle("Trailer");
+            model.addAttribute("makeList", makeList);
             return "vehicle/trailer";
         }
     }
@@ -75,7 +80,7 @@ public class VehicleController {
                                   @RequestParam("param") String what, Model model){
 
         model.addAttribute("what", what);
-        List<Make> makeList = makeRepository.findAll();
+        List<Make> makeList = makeRepository.findByTypeOfVehicle("Truck");
         model.addAttribute("makeList", makeList);
 
         if (bindingResult.hasErrors()){
@@ -99,6 +104,8 @@ public class VehicleController {
                               @RequestParam("param") String what, Model model){
 
         model.addAttribute("what", what);
+        List<Make> makeList = makeRepository.findByTypeOfVehicle("Trailer");
+        model.addAttribute("makeList", makeList);
 
         if (bindingResult.hasErrors()){
             return "vehicle/trailer";

@@ -11,6 +11,15 @@ public class Make {
 
     private String name;
 
+    private String typeOfVehicle;
+
+    public Make(){}
+
+    public Make(String name, String typeOfVehicle) {
+        this.name = name;
+        this.typeOfVehicle = typeOfVehicle;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -25,5 +34,13 @@ public class Make {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getTypeOfVehicle() {
+        return typeOfVehicle;
+    }
+
+    public void setTypeOfVehicle(String typeOfVehicle) {
+        this.typeOfVehicle = typeOfVehicle;
     }
 }

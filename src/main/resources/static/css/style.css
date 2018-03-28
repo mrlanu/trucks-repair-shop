@@ -15,7 +15,7 @@ nav{
 }
 
 .mySpace{
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .mySpaceForLogin{
@@ -24,6 +24,11 @@ nav{
 
 .btn-spacer{
     width: 200px;
+}
+
+.btn-vehicle-form{
+    width: 200px;
+    margin-left: 55px;
 }
 
 .isDisabled {

@@ -23,6 +23,8 @@
                     <!-- We get this param from model for form action either edit or new truck-->
                     <input name="param" th:value="${what}" hidden>
 
+                    <input type="text" class="form-control" th:field="*{broken}" id="broken" hidden/>
+
                     <div class="form-group">
                         <label for="number">Trailer Number</label>
                         <input type="text" class="form-control" th:field="*{number}" id="number"
@@ -44,9 +46,12 @@
                         <input type="text" class="form-control" th:field="*{type}" id="type" readonly/>
                         <div class="text text-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="make">Make</label>
-                        <input type="text" class="form-control" th:field="*{make}" id="make" placeholder="E.g. Utility"/>
+                    <div class="form-group" >
+                        <label for="makeName">Please choose the Make:</label>
+                        <select class="form-control" th:value="${makeName}" name="makeName" id="makeName" required="required">
+                            <option selected="selected" data-th-text="${makeName == null ? 'choose the Make' : makeName}"></option>
+                            <option data-th-each="eachMake : ${makeList}" data-th-text="${eachMake.name}"></option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="model">Model</label>
@@ -76,8 +81,11 @@
                             <!--<input type="radio" name="inlineRadioOptions" id="reefer2" th:field="*{reefer}" th:value="false">NO-->
                         <!--</label>-->
                     <!--</div>-->
-
-                    <button type="submit" class="btn btn-primary">SAVE</button>
+                    <hr/>
+                    <div class="row">
+                    <button type="submit" class="btn btn-primary btn-vehicle-form">SAVE</button>
+                        <a  class="btn btn-secondary btn-vehicle-form" th:href="@{/vehicles/vehiclesList}">Cancel</a>
+                    </div>
                 </fieldset>
             </form>
         </div>
