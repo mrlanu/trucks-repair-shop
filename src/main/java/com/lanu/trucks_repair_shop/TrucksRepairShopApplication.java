@@ -7,6 +7,7 @@ import com.lanu.trucks_repair_shop.domain.vehicle.Make;
 import com.lanu.trucks_repair_shop.domain.vehicle.Trailer;
 import com.lanu.trucks_repair_shop.domain.vehicle.Truck;
 import com.lanu.trucks_repair_shop.repositories.MakeRepository;
+import com.lanu.trucks_repair_shop.services.BreakingDetailService;
 import com.lanu.trucks_repair_shop.services.BreakingService;
 import com.lanu.trucks_repair_shop.services.PartService;
 import com.lanu.trucks_repair_shop.services.security_services.UserService;
@@ -36,6 +37,9 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 
 	@Autowired
 	private BreakingService breakingService;
+
+	@Autowired
+	private BreakingDetailService breakingDetailService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TrucksRepairShopApplication.class, args);
@@ -107,6 +111,11 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		Breaking breaking2 = new Breaking(new Date(), 380978);
 		Breaking breaking3 = new Breaking(new Date(), 345345);
 		Breaking breaking4 = new Breaking(new Date(), 966700);
+
+		/*BreakingDetail breakingDetail = new BreakingDetail();
+		breakingDetail.setDetail("Pizdec");
+
+		breaking1.getBreakingDetailList().add(breakingDetail);*/
 
 		vehicleService.save(truck1, "Volvo");
 		vehicleService.save(truck2, "Volvo");

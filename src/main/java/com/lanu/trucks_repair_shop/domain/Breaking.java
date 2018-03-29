@@ -6,6 +6,7 @@ import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Breaking {
@@ -28,6 +29,9 @@ public class Breaking {
     @ManyToOne
     @JoinColumn(name = "vehicle_number")
     private Vehicle vehicle;
+
+    @OneToMany(mappedBy = "breaking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BreakingDetail> breakingDetailList;
 
     public Breaking(){}
 
@@ -98,5 +102,13 @@ public class Breaking {
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public List<BreakingDetail> getBreakingDetailList() {
+        return breakingDetailList;
+    }
+
+    public void setBreakingDetailList(List<BreakingDetail> breakingDetailList) {
+        this.breakingDetailList = breakingDetailList;
     }
 }
