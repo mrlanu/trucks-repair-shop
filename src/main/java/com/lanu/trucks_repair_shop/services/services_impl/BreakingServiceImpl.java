@@ -1,6 +1,7 @@
 package com.lanu.trucks_repair_shop.services.services_impl;
 
 import com.lanu.trucks_repair_shop.domain.Breaking;
+import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
 import com.lanu.trucks_repair_shop.repositories.BreakingRepository;
 import com.lanu.trucks_repair_shop.services.BreakingService;
@@ -16,8 +17,9 @@ public class BreakingServiceImpl implements BreakingService {
     private BreakingRepository breakingRepository;
 
     @Override
-    public void createBreaking(Breaking breaking, Vehicle vehicle) {
+    public void createBreaking(Breaking breaking, Vehicle vehicle, User user) {
         breaking.setVehicle(vehicle);
+        breaking.setUserCreate(user);
         breakingRepository.save(breaking);
     }
 

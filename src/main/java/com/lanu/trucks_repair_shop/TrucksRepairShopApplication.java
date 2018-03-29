@@ -16,6 +16,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+
 @SpringBootApplication
 public class TrucksRepairShopApplication implements CommandLineRunner{
 
@@ -43,6 +47,25 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 	}
 
 	private void init(){
+
+		User userAdmin = new User();
+		userAdmin.setUsername("fargo");
+		userAdmin.setPassword("28335555");
+		userAdmin.addRole(new Role("ADMIN"));
+		userService.createUser(userAdmin);
+
+		User userDriver = new User();
+		userDriver.setUsername("driver");
+		userDriver.setPassword("driver");
+		userDriver.addRole(new Role("DRIVER"));
+		userService.createUser(userDriver);
+
+		User userUser = new User();
+		userUser.setUsername("user");
+		userUser.setPassword("user");
+		userUser.addRole(new Role("USER"));
+		userService.createUser(userUser);
+
 		Truck truck1 = new Truck("Cummins", 775, "123PI678", "Truck", "780", "2011");
 		Truck truck2 = new Truck("Cummins", 777, "RTI45361", "Truck", "670", "2007");
 		Truck truck3 = new Truck("Cummins", 800, "56238586", "Truck", "670", "2017");
@@ -80,10 +103,10 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		Part part4 = new Part("Rim", "03/04/2018", 480783);
 
 
-		Breaking breaking1 = new Breaking("03/07/2018", 863567);
-		Breaking breaking2 = new Breaking("01/03/2018", 380978);
-		Breaking breaking3 = new Breaking("01/07/2018", 345345);
-		Breaking breaking4 = new Breaking("12/07/2017", 966700);
+		Breaking breaking1 = new Breaking(new Date(), 380990);
+		Breaking breaking2 = new Breaking(new Date(), 380978);
+		Breaking breaking3 = new Breaking(new Date(), 345345);
+		Breaking breaking4 = new Breaking(new Date(), 966700);
 
 		vehicleService.save(truck1, "Volvo");
 		vehicleService.save(truck2, "Volvo");
@@ -103,30 +126,10 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		partService.createPart(part3, truck5);
 		partService.createPart(part4, truck2);
 
-		breakingService.createBreaking(breaking1, truck1);
-		breakingService.createBreaking(breaking2, truck5);
-		breakingService.createBreaking(breaking3, truck2);
-		breakingService.createBreaking(breaking4, truck2);
-
-		User userAdmin = new User();
-		userAdmin.setUsername("fargo");
-		userAdmin.setPassword("28335555");
-		userAdmin.addRole(new Role("ADMIN"));
-		userService.createUser(userAdmin);
-
-		User userDriver = new User();
-		userDriver.setUsername("driver");
-		userDriver.setPassword("driver");
-		userDriver.addRole(new Role("DRIVER"));
-		userService.createUser(userDriver);
-
-		User userUser = new User();
-		userUser.setUsername("user");
-		userUser.setPassword("user");
-		userUser.addRole(new Role("USER"));
-		userService.createUser(userUser);
-
-
+		breakingService.createBreaking(breaking1, truck1, userDriver);
+		breakingService.createBreaking(breaking2, truck5, userDriver);
+		breakingService.createBreaking(breaking3, truck2, userDriver);
+		breakingService.createBreaking(breaking4, truck2, userDriver);
 
 	}
 }

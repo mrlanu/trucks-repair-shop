@@ -29,6 +29,7 @@
                         <th>Model</th>
                         <th>Year</th>
                         <th>Broken</th>
+                        <th sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_DRIVER')"></th>
                         <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                         <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                     </tr>
@@ -45,6 +46,10 @@
                             <a th:href="${vehicle.broken} ? @{/breaking/breakingList(number=${vehicle.number}, type=${vehicle.type})} : @{'#'}"
                                th:class="${vehicle.broken} ? 'btn btn-danger btn-sm' : 'isDisabled'"
                                th:text="${vehicle.broken} ? 'Yes' : 'No'"></a>
+                        </td>
+                        <td align="center" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_DRIVER')">
+                            <a th:href="@{/vehicles/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})}"
+                               class="btn btn-dark btn-sm">Breaking</a>
                         </td>
                         <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">
                             <a th:href="@{/vehicles/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})}"

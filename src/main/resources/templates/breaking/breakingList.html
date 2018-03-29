@@ -26,27 +26,22 @@
                     <table id="breaking" class="table table-hover table-striped">
                         <thead>
                             <tr>
-                                <th>Something</th>
-                                <th>Something</th>
-                                <th>Something</th>
-                                <th>Something</th>
-                                <th>Something</th>
+                                <th>Create date</th>
+                                <th>User create</th>
+                                <th>Milage</th>
+                                <th>Fixed</th>
+                                <th>Fixed date</th>
+                                <th>Mechanic</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Coming soon</td>
-                                <td>Coming soon</td>
-                                <td>Coming soon</td>
-                                <td>Coming soon</td>
-                                <td>Coming soon</td>
-                            </tr>
-                            <tr>
-                                <td>Coming soon</td>
-                                <td>Coming soon</td>
-                                <td>Coming soon</td>
-                                <td>Coming soon</td>
-                                <td>Coming soon</td>
+                            <tr th:each="breaking:${breakingList}">
+                                <td th:text="${#dates.format(breaking.dateCreate, 'MM-dd-yyyy HH:mm')}"></td>
+                                <td th:text="${breaking.userCreate.username}"></td>
+                                <td th:text="${breaking.vehicleMilage}"></td>
+                                <td th:text="${breaking.fixed}"></td>
+                                <td th:text="${#dates.format(breaking.dateFixed, 'MM-dd-yyyy HH:mm')}"></td>
+                                <td th:text="${breaking.userFixing}"></td>
                             </tr>
                         </tbody>
                     </table>
