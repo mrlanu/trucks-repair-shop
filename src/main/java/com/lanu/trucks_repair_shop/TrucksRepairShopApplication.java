@@ -122,6 +122,7 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		trailer3.setMake(makeUtility);
 		trailer4.setMake(makeWabash);
 		trailer5.setMake(makeUtility);
+		trailer6.setMake(makeUtility);
 
 		vehicleService.save(truck1);
 		vehicleService.save(truck2);
