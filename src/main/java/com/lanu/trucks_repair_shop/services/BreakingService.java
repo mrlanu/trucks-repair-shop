@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BreakingService {
 
-    void createBreaking(Breaking breaking, Vehicle vehicle, User user);
+    void save(Breaking breaking);
 
-    List<Breaking> findVehicleBreakings(Vehicle vehicle);
+    List<Breaking> findBreakingsListByVehicle(Vehicle vehicle);
 }

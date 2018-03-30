@@ -6,6 +6,7 @@ import com.lanu.trucks_repair_shop.domain.Part;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -36,7 +37,7 @@ public class Vehicle {
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
     private List<Part> partList;
 
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Breaking> breakingList;
 
     public Vehicle(){}
@@ -103,5 +104,21 @@ public class Vehicle {
 
     public void setBroken(boolean broken) {
         isBroken = broken;
+    }
+
+    public List<Part> getPartList() {
+        return partList;
+    }
+
+    public void setPartList(List<Part> partList) {
+        this.partList = partList;
+    }
+
+    public List<Breaking> getBreakingList() {
+        return breakingList;
+    }
+
+    public void setBreakingList(List<Breaking> breakingList) {
+        this.breakingList = breakingList;
     }
 }

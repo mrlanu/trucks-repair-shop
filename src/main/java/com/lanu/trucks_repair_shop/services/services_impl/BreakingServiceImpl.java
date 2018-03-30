@@ -17,14 +17,12 @@ public class BreakingServiceImpl implements BreakingService {
     private BreakingRepository breakingRepository;
 
     @Override
-    public void createBreaking(Breaking breaking, Vehicle vehicle, User user) {
-        breaking.setVehicle(vehicle);
-        breaking.setUserCreate(user);
+    public void save(Breaking breaking) {
         breakingRepository.save(breaking);
     }
 
     @Override
-    public List<Breaking> findVehicleBreakings(Vehicle vehicle) {
+    public List<Breaking> findBreakingsListByVehicle(Vehicle vehicle) {
         return breakingRepository.findByVehicle(vehicle);
     }
 }

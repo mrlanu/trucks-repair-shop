@@ -75,8 +75,6 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		Truck truck3 = new Truck("Cummins", 800, "56238586", "Truck", "670", "2017");
 		Truck truck4 = new Truck("Cummins", 779, "FMI67342", "Truck", "670", "2015");
 		Truck truck5 = new Truck("Cummins", 802, "FX56P872", "Truck", "780", "2018");
-        truck1.setBroken(true);
-        truck4.setBroken(true);
 
 		Trailer trailer1 = new Trailer(1025, "HTP67TY7", "Trailer", "model 02", "2003", 53, true);
 		Trailer trailer2 = new Trailer(1009, "87654321", "Trailer", "3000 R", "2005", 53, true);
@@ -84,8 +82,6 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		Trailer trailer4 = new Trailer(1010, "WE782395", "Trailer", "3000 R", "2009", 53, true);
 		Trailer trailer5 = new Trailer(1011, "PUY78673", "Trailer", "model 01", "2011", 53, false);
 		Trailer trailer6 = new Trailer(1001, "HYW98HYI", "Trailer", "53X102", "2003", 53, true);
-        trailer3.setBroken(true);
-        trailer2.setBroken(true);
 
 		Make makeVolvo = new Make("Volvo", "Truck");
 		Make makeFreightliner = new Make("Freightliner", "Truck");
@@ -111,6 +107,10 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		Breaking breaking2 = new Breaking(new Date(), 380978);
 		Breaking breaking3 = new Breaking(new Date(), 345345);
 		Breaking breaking4 = new Breaking(new Date(), 966700);
+		breaking1.setUserCreate(userDriver);
+		breaking2.setUserCreate(userDriver);
+		breaking3.setUserCreate(userAdmin);
+		breaking4.setUserCreate(userUser);
 
 		/*BreakingDetail breakingDetail = new BreakingDetail();
 		breakingDetail.setDetail("Pizdec");
@@ -135,10 +135,10 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		partService.createPart(part3, truck5);
 		partService.createPart(part4, truck2);
 
-		breakingService.createBreaking(breaking1, truck1, userDriver);
-		breakingService.createBreaking(breaking2, truck5, userDriver);
-		breakingService.createBreaking(breaking3, truck2, userDriver);
-		breakingService.createBreaking(breaking4, truck2, userDriver);
+		vehicleService.createBreaking(truck1, breaking1);
+		vehicleService.createBreaking(truck2, breaking2);
+		vehicleService.createBreaking(truck5, breaking3);
+		vehicleService.createBreaking(truck5, breaking4);
 
 	}
 }

@@ -24,9 +24,9 @@ public class BreakingController {
     private BreakingService breakingService;
 
     @GetMapping("/breakingList")
-    public String breakingListt(@RequestParam("number") Integer number, @RequestParam("type") String type, Model model){
+    public String breakingList(@RequestParam("number") Integer number, @RequestParam("type") String type, Model model){
         Vehicle vehicle = vehicleService.findByNumber(number);
-        List<Breaking> breakingList = breakingService.findVehicleBreakings(vehicle);
+        List<Breaking> breakingList = breakingService.findBreakingsListByVehicle(vehicle);
         model.addAttribute("vehicle", vehicle);
         model.addAttribute("breakingList", breakingList);
         return "breaking/breakingList";

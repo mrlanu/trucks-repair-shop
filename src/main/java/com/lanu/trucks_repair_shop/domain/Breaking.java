@@ -30,8 +30,8 @@ public class Breaking {
     @JoinColumn(name = "vehicle_number")
     private Vehicle vehicle;
 
-    @OneToMany(mappedBy = "breaking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<BreakingDetail> breakingDetailList;
+    /*@OneToMany(mappedBy = "breaking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<BreakingDetail> breakingDetailList;*/
 
     public Breaking(){}
 
@@ -104,11 +104,11 @@ public class Breaking {
         this.vehicle = vehicle;
     }
 
-    public List<BreakingDetail> getBreakingDetailList() {
+    /*public List<BreakingDetail> getBreakingDetailList() {
         return breakingDetailList;
     }
 
     public void setBreakingDetailList(List<BreakingDetail> breakingDetailList) {
         this.breakingDetailList = breakingDetailList;
-    }
+    }*/
 }
