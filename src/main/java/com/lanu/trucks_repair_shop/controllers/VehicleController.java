@@ -24,6 +24,16 @@ public class VehicleController {
     @Autowired
     private MakeRepository makeRepository;
 
+    @ModelAttribute("makeListTruck")
+    public List<Make> makeListTruck(){
+        return makeRepository.findByTypeOfVehicle("Truck");
+    }
+
+    @ModelAttribute("makeListTrailer")
+    public List<Make> makeListTrailer(){
+        return makeRepository.findByTypeOfVehicle("Trailer");
+    }
+
     @GetMapping("/vehiclesList")
     public String unitsList(Model model){
         model.addAttribute("vehiclesList", vehicleService.findAll());
@@ -32,23 +42,15 @@ public class VehicleController {
 
     @GetMapping("/showFormForNewTruck")
     public String addTruck(Model model){
-        Truck truck = new Truck();
-        truck.setType("Truck");
-        model.addAttribute("truck", truck);
+        model.addAttribute("truck", new Truck("Truck"));
         model.addAttribute("what", "new");
-        List<Make> makeList = makeRepository.findByTypeOfVehicle("Truck");
-        model.addAttribute("makeList", makeList);
         return "vehicle/truck";
     }
 
     @GetMapping("/showFormForNewTrailer")
     public String addTrailer(Model model){
-        Trailer trailer = new Trailer();
-        trailer.setType("Trailer");
-        model.addAttribute("trailer", trailer);
+        model.addAttribute("trailer", new Trailer("Trailer"));
         model.addAttribute("what", "new");
-        List<Make> makeList = makeRepository.findByTypeOfVehicle("Trailer");
-        model.addAttribute("makeList", makeList);
         return "vehicle/trailer";
     }
 
@@ -58,30 +60,19 @@ public class VehicleController {
         model.addAttribute("what", "edit");
 
         if (type.equalsIgnoreCase("Truck")){
-            Truck truck = (Truck) vehicleService.findByNumber(number);
-            model.addAttribute("makeName", truck.getMake().getName());
-            model.addAttribute("truck", truck);
-            List<Make> makeList = makeRepository.findByTypeOfVehicle("Truck");
-            model.addAttribute("makeList", makeList);
+            model.addAttribute("truck", (Truck) vehicleService.findByNumber(number));
             return "vehicle/truck";
         }else {
-            Trailer trailer = (Trailer) vehicleService.findByNumber(number);
-            model.addAttribute("makeName", trailer.getMake().getName());
-            model.addAttribute("trailer", trailer);
-            List<Make> makeList = makeRepository.findByTypeOfVehicle("Trailer");
-            model.addAttribute("makeList", makeList);
+            model.addAttribute("trailer", (Trailer) vehicleService.findByNumber(number));
             return "vehicle/trailer";
         }
     }
 
     @PostMapping("/saveTruck")
     public String addNewTruckPost(@Valid Truck truck, BindingResult bindingResult,
-                                  @ModelAttribute("makeName") String makeName,
                                   @RequestParam("param") String what, Model model){
 
         model.addAttribute("what", what);
-        List<Make> makeList = makeRepository.findByTypeOfVehicle("Truck");
-        model.addAttribute("makeList", makeList);
 
         if (bindingResult.hasErrors()){
             return "vehicle/truck";
@@ -93,19 +84,16 @@ public class VehicleController {
             }
         }
 
-        vehicleService.save(truck, makeName);
+        vehicleService.save(truck);
 
         return "redirect:/vehicles/vehiclesList";
     }
 
     @PostMapping("/saveTrailer")
     public String saveTrailer(@Valid Trailer trailer, BindingResult bindingResult,
-                              @ModelAttribute("makeName") String makeName,
                               @RequestParam("param") String what, Model model){
 
         model.addAttribute("what", what);
-        List<Make> makeList = makeRepository.findByTypeOfVehicle("Trailer");
-        model.addAttribute("makeList", makeList);
 
         if (bindingResult.hasErrors()){
             return "vehicle/trailer";
@@ -116,7 +104,7 @@ public class VehicleController {
                 return "vehicle/trailer";
             }
         }
-        vehicleService.save(trailer, makeName);
+        vehicleService.save(trailer);
 
         return "redirect:/vehicles/vehiclesList";
     }

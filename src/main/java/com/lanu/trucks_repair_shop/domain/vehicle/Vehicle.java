@@ -42,6 +42,10 @@ public class Vehicle {
 
     public Vehicle(){}
 
+    public Vehicle(String type) {
+        this.type = type;
+    }
+
     public Vehicle(Integer number, String vinNumber, String type, String model, String year) {
         this.number = number;
         this.vinNumber = vinNumber;

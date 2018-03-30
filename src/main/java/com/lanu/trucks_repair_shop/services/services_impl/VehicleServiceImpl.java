@@ -25,8 +25,7 @@ public class VehicleServiceImpl implements VehicleService{
     private BreakingService breakingService;
 
     @Override
-    public void save(Vehicle vehicle, String make) {
-        vehicle.setMake(makeRepository.findByName(make));
+    public void save(Vehicle vehicle) {
         vehicleRepository.save(vehicle);
     }
 

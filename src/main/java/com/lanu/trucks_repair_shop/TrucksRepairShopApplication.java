@@ -112,23 +112,29 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		breaking3.setUserCreate(userAdmin);
 		breaking4.setUserCreate(userUser);
 
-		/*BreakingDetail breakingDetail = new BreakingDetail();
-		breakingDetail.setDetail("Pizdec");
+		truck1.setMake(makeFreightliner);
+		truck2.setMake(makeVolvo);
+		truck3.setMake(makeVolvo);
+		truck4.setMake(makeFreightliner);
+		truck5.setMake(makeVolvo);
+		trailer1.setMake(makeGreatDane);
+		trailer2.setMake(makeGreatDane);
+		trailer3.setMake(makeUtility);
+		trailer4.setMake(makeWabash);
+		trailer5.setMake(makeUtility);
 
-		breaking1.getBreakingDetailList().add(breakingDetail);*/
+		vehicleService.save(truck1);
+		vehicleService.save(truck2);
+		vehicleService.save(truck3);
+		vehicleService.save(truck4);
+		vehicleService.save(truck5);
 
-		vehicleService.save(truck1, "Volvo");
-		vehicleService.save(truck2, "Volvo");
-		vehicleService.save(truck3, "Volvo");
-		vehicleService.save(truck4, "Peterbilt");
-		vehicleService.save(truck5, "Freightliner");
-
-		vehicleService.save(trailer1, "Wabash");
-		vehicleService.save(trailer2, "Utility");
-		vehicleService.save(trailer3, "Great Dane");
-		vehicleService.save(trailer4, "Utility");
-		vehicleService.save(trailer5, "Great Dane");
-		vehicleService.save(trailer6, "Great Dane");
+		vehicleService.save(trailer1);
+		vehicleService.save(trailer2);
+		vehicleService.save(trailer3);
+		vehicleService.save(trailer4);
+		vehicleService.save(trailer5);
+		vehicleService.save(trailer6);
 
 		partService.createPart(part1, truck2);
 		partService.createPart(part2, truck1);

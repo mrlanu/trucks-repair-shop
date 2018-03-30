@@ -11,6 +11,10 @@ public class Truck extends Vehicle {
 
     public Truck(){}
 
+    public Truck(String type) {
+        super(type);
+    }
+
     public Truck(String engineType,
                  Integer number,
                  String vinNumber,

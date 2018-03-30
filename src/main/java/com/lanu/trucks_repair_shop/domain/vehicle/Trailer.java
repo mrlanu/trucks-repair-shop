@@ -13,6 +13,10 @@ public class Trailer extends Vehicle {
 
     public Trailer(){}
 
+    public Trailer(String type) {
+        super(type);
+    }
+
     public Trailer(Integer number,
                    String vinNumber,
                    String type,
