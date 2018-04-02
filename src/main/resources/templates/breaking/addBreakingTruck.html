@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="common/header :: common-header"></head>
+
+<body>
+
+<div th:replace="common/header :: navbar"></div>
+
+<div class="container-fluid mySpace">
+    <div class="row justify-content-md-center">
+        <div class="col-md-11">
+            <form th:action="@{/breaking/saveBreaking}" th:object="${breaking}" method="post">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+                        <div class="card-header" th:text="${vehicle.type} + ' number: ' + ${vehicle.number}"></div>
+                        <div class="card-body">
+                            <h4 class="card-title">Breaking details</h4>
+                            <hr/>
+                            <br/>
+                            <label for="milage">Vehicle milage</label>
+                            <input type="text" class="form-control" th:field="*{vehicleMilage}" id="milage"
+                                   placeholder="Enter vehicle milage" th:autofocus="true"/>
+                            <input type="hidden" name="vehicleNumber" th:value="${vehicle.number}"/>
+                            <hr/>
+                            <button type="submit" class="btn btn-primary btn-vehicle-form">SAVE</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <table id="breaking" class="table table-bordered table-striped table-hover table-sm">
+                        <thead>
+                        <tr>
+                            <th>Type of breaking</th>
+                            <th class="text-center">Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="breaking:${kindMap}">
+                            <td style="width: 400px">
+                                <input type="checkbox" name="breakingKind" th:value="${breaking.key}"/>
+                                <label th:for="${breaking.value}" th:text="${breaking.value}"></label>
+                            </td>
+                            <td>
+                                <input type="text" style="width: 700px" name="descriptionList" th:value="null"/>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="common/header :: body-bottom-scripts"></div>
+
+</body>
+</html>

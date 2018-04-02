@@ -1,10 +1,11 @@
-package com.lanu.trucks_repair_shop.domain;
+package com.lanu.trucks_repair_shop.domain.breaking;
 
 import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,10 @@ public class Breaking {
     private Date dateFixed;
     private int vehicleMilage;
     private boolean fixed;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "breaking_id")
+    private List<BreakingDetail> breakingDetailList;
 
     @OneToOne
     private User userCreate;
@@ -87,6 +92,21 @@ public class Breaking {
 
     public void setUserFixing(User userFixing) {
         this.userFixing = userFixing;
+    }
+
+    public List<BreakingDetail> getBreakingDetailList() {
+        return breakingDetailList;
+    }
+
+    public void setBreakingDetailList(List<BreakingDetail> breakingDetailList) {
+        this.breakingDetailList = breakingDetailList;
+    }
+
+    public void addBreakingDetail(BreakingDetail breakingDetail){
+        if (breakingDetailList == null){
+            breakingDetailList = new ArrayList<>();
+        }
+        breakingDetailList.add(breakingDetail);
     }
 
 }

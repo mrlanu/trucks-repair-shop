@@ -48,7 +48,7 @@
                                th:text="${vehicle.broken} ? 'Yes' : 'No'"></a>
                         </td>
                         <td align="center" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_DRIVER')">
-                            <a th:href="@{/vehicles/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})}"
+                            <a th:href="@{/breaking/showFormForAddBreaking(number=${vehicle.number}, type=${vehicle.type})}"
                                class="btn btn-dark btn-sm">Breaking</a>
                         </td>
                         <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">

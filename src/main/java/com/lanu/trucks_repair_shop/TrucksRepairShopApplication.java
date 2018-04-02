@@ -1,5 +1,7 @@
 package com.lanu.trucks_repair_shop;
 
+import com.lanu.trucks_repair_shop.domain.breaking.Breaking;
+import com.lanu.trucks_repair_shop.domain.breaking.BreakingDetail;
 import com.lanu.trucks_repair_shop.domain.security.Role;
 import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.domain.vehicle.Make;
@@ -12,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Date;
 
 @SpringBootApplication
 public class TrucksRepairShopApplication implements CommandLineRunner{
@@ -92,6 +96,11 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		trailer5.setMake(makeUtility);
 		trailer6.setMake(makeUtility);
 
+		truck1.setBroken(true);
+		Breaking breaking = new Breaking(new Date(), 875456);
+		breaking.addBreakingDetail(new BreakingDetail("kolesa", "zadne"));
+		breaking.setUserCreate(userDriver);
+		truck1.addBreaking(breaking);
 		vehicleService.save(truck1);
 		vehicleService.save(truck2);
 		vehicleService.save(truck3);
