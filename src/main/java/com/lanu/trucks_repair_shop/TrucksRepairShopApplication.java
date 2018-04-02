@@ -1,25 +1,17 @@
 package com.lanu.trucks_repair_shop;
 
-import com.lanu.trucks_repair_shop.domain.*;
 import com.lanu.trucks_repair_shop.domain.security.Role;
 import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.domain.vehicle.Make;
 import com.lanu.trucks_repair_shop.domain.vehicle.Trailer;
 import com.lanu.trucks_repair_shop.domain.vehicle.Truck;
 import com.lanu.trucks_repair_shop.repositories.MakeRepository;
-import com.lanu.trucks_repair_shop.services.BreakingDetailService;
-import com.lanu.trucks_repair_shop.services.BreakingService;
-import com.lanu.trucks_repair_shop.services.PartService;
 import com.lanu.trucks_repair_shop.services.security_services.UserService;
 import com.lanu.trucks_repair_shop.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
 
 @SpringBootApplication
 public class TrucksRepairShopApplication implements CommandLineRunner{
@@ -32,14 +24,6 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 
 	@Autowired
 	private MakeRepository makeRepository;
-
-	@Autowired PartService partService;
-
-	@Autowired
-	private BreakingService breakingService;
-
-	@Autowired
-	private BreakingDetailService breakingDetailService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(TrucksRepairShopApplication.class, args);
@@ -96,22 +80,6 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		makeRepository.save(makeUtility);
 		makeRepository.save(makeWabash);
 
-
-		Part part1 = new Part("Tire", "03/07/2018", 966000);
-		Part part2 = new Part("Hose", "01/17/2018", 113897);
-		Part part3 = new Part("Hud", "01/07/2018", 500897);
-		Part part4 = new Part("Rim", "03/04/2018", 480783);
-
-
-		Breaking breaking1 = new Breaking(new Date(), 380990);
-		Breaking breaking2 = new Breaking(new Date(), 380978);
-		Breaking breaking3 = new Breaking(new Date(), 345345);
-		Breaking breaking4 = new Breaking(new Date(), 966700);
-		breaking1.setUserCreate(userDriver);
-		breaking2.setUserCreate(userDriver);
-		breaking3.setUserCreate(userAdmin);
-		breaking4.setUserCreate(userUser);
-
 		truck1.setMake(makeFreightliner);
 		truck2.setMake(makeVolvo);
 		truck3.setMake(makeVolvo);
@@ -136,16 +104,6 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		vehicleService.save(trailer4);
 		vehicleService.save(trailer5);
 		vehicleService.save(trailer6);
-
-		partService.createPart(part1, truck2);
-		partService.createPart(part2, truck1);
-		partService.createPart(part3, truck5);
-		partService.createPart(part4, truck2);
-
-		vehicleService.createBreaking(truck1, breaking1);
-		vehicleService.createBreaking(truck2, breaking2);
-		vehicleService.createBreaking(truck5, breaking3);
-		vehicleService.createBreaking(truck5, breaking4);
 
 	}
 }

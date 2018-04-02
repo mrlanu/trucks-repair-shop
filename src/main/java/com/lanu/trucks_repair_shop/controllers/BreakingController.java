@@ -2,7 +2,6 @@ package com.lanu.trucks_repair_shop.controllers;
 
 import com.lanu.trucks_repair_shop.domain.Breaking;
 import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
-import com.lanu.trucks_repair_shop.services.BreakingService;
 import com.lanu.trucks_repair_shop.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,13 +19,10 @@ public class BreakingController {
     @Autowired
     private VehicleService vehicleService;
 
-    @Autowired
-    private BreakingService breakingService;
-
     @GetMapping("/breakingList")
     public String breakingList(@RequestParam("number") Integer number, @RequestParam("type") String type, Model model){
         Vehicle vehicle = vehicleService.findByNumber(number);
-        List<Breaking> breakingList = breakingService.findBreakingsListByVehicle(vehicle);
+        List<Breaking> breakingList = vehicle.getBreakingList();
         model.addAttribute("vehicle", vehicle);
         model.addAttribute("breakingList", breakingList);
         return "breaking/breakingList";

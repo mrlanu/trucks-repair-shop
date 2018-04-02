@@ -26,13 +26,6 @@ public class Breaking {
     @OneToOne
     private User userFixing;
 
-    @ManyToOne
-    @JoinColumn(name = "vehicle_number")
-    private Vehicle vehicle;
-
-    /*@OneToMany(mappedBy = "breaking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<BreakingDetail> breakingDetailList;*/
-
     public Breaking(){}
 
     public Breaking(Date dateCreate, int vehicleMilage) {
@@ -96,19 +89,4 @@ public class Breaking {
         this.userFixing = userFixing;
     }
 
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
-
-    /*public List<BreakingDetail> getBreakingDetailList() {
-        return breakingDetailList;
-    }
-
-    public void setBreakingDetailList(List<BreakingDetail> breakingDetailList) {
-        this.breakingDetailList = breakingDetailList;
-    }*/
 }

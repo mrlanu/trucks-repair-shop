@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface VehicleService {
 
-    void createBreaking(Vehicle vehicle, Breaking breaking);
-
     void save(Vehicle vehicle);
 
     Vehicle findByNumber(Integer number);

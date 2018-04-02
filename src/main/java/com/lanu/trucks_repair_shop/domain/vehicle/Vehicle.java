@@ -1,7 +1,6 @@
 package com.lanu.trucks_repair_shop.domain.vehicle;
 
 import com.lanu.trucks_repair_shop.domain.Breaking;
-import com.lanu.trucks_repair_shop.domain.Part;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -34,10 +33,8 @@ public class Vehicle {
 
     private boolean isBroken;
 
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
-    private List<Part> partList;
-
-    @OneToMany(mappedBy = "vehicle", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "vehicle_number")
     private List<Breaking> breakingList;
 
     public Vehicle(){}
@@ -110,19 +107,18 @@ public class Vehicle {
         isBroken = broken;
     }
 
-    public List<Part> getPartList() {
-        return partList;
-    }
-
-    public void setPartList(List<Part> partList) {
-        this.partList = partList;
-    }
-
     public List<Breaking> getBreakingList() {
         return breakingList;
     }
 
     public void setBreakingList(List<Breaking> breakingList) {
         this.breakingList = breakingList;
+    }
+
+    public void addBreaking(Breaking breaking){
+        if (breakingList == null){
+            breakingList = new ArrayList<>();
+        }
+        breakingList.add(breaking);
     }
 }
