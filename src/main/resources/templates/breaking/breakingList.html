@@ -18,6 +18,9 @@
                         <div class="card-body">
                             <h4 class="card-title">Breaking list</h4>
                             <p class="card-text">This page is under construction. Sorry about that. Coming soon...</p>
+                            <a th:href="@{/breaking/showFormForAddBreaking(number=${vehicle.number}, type=${vehicle.type})}" class="btn btn-secondary">Add breaking</a>
+                            <a  class="btn btn-secondary" th:href="@{/vehicles/vehiclesList}">Cancel</a>
+
                         </div>
                     </div>
                 </div>
@@ -35,11 +38,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="breaking:${breakingList}">
+                            <tr th:each="breaking:${breakingList}" th:class="!${breaking.fixed} ? 'text-danger'">
                                 <td th:text="${#dates.format(breaking.dateCreate, 'MM-dd-yyyy HH:mm')}"></td>
-                                <td th:text="${breaking.userCreate.username}"></td>
+                                <td th:text="${breaking.userCreate.firstName + ' ' + breaking.userCreate.lastName}"></td>
                                 <td th:text="${breaking.vehicleMilage}"></td>
-                                <td th:text="${breaking.fixed}"></td>
+                                <td th:text="${breaking.fixed} ? 'Yes' : 'No'"></td>
                                 <td th:text="${#dates.format(breaking.dateFixed, 'MM-dd-yyyy HH:mm')}"></td>
                                 <td th:text="${breaking.userFixing}"></td>
                             </tr>

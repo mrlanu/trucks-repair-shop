@@ -43,12 +43,14 @@
                         <td th:text="${vehicle.model}"></td>
                         <td th:text="${vehicle.year}"></td>
                         <td align="center">
+                            <!--It's link because here was button if vehicle was broken-->
                             <a th:href="${vehicle.broken} ? @{/breaking/breakingList(number=${vehicle.number}, type=${vehicle.type})} : @{'#'}"
-                               th:class="${vehicle.broken} ? 'btn btn-danger btn-sm' : 'isDisabled'"
+                               th:class="${vehicle.broken} ? 'text-danger isDisabled' : 'isDisabled'"
                                th:text="${vehicle.broken} ? 'Yes' : 'No'"></a>
                         </td>
                         <td align="center" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_DRIVER')">
-                            <a th:href="@{/breaking/showFormForAddBreaking(number=${vehicle.number}, type=${vehicle.type})}"
+                            <!-- @{/breaking/showFormForAddBreaking(number=${vehicle.number}, type=${vehicle.type})}-->
+                            <a th:href="@{/breaking/breakingList(number=${vehicle.number}, type=${vehicle.type})}"
                                class="btn btn-dark btn-sm">Breaking</a>
                         </td>
                         <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">

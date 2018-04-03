@@ -30,6 +30,17 @@ public class User extends AbstractDomainClass implements UserDetails{
 
     private boolean enabled = true;
 
+    public User(){}
+
+    public User(String username, String password, String firstName, String lastName, String email, String phone) {
+        this.username = username;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+    }
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "user_id"),
      inverseJoinColumns = @JoinColumn(name = "role_id"))

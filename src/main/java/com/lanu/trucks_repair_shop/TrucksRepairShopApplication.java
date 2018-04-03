@@ -40,21 +40,18 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 
 	private void init(){
 
-		User userAdmin = new User();
-		userAdmin.setUsername("fargo");
-		userAdmin.setPassword("28335555");
+		User userAdmin = new User("fargo", "fargo", "Serhiy", "Khabenyuk",
+				"mrlanu@gmail.com", "(773)430 7554");
 		userAdmin.addRole(new Role("ADMIN"));
 		userService.createUser(userAdmin);
 
-		User userDriver = new User();
-		userDriver.setUsername("driver");
-		userDriver.setPassword("driver");
+		User userDriver = new User("driver", "driver", "Igor", "Shershen",
+				"shershen@mail.com", "(773)231 1716");
 		userDriver.addRole(new Role("DRIVER"));
 		userService.createUser(userDriver);
 
-		User userUser = new User();
-		userUser.setUsername("user");
-		userUser.setPassword("user");
+		User userUser = new User("user", "user", "Susan", "Public",
+				"public@yahoo.com", "(800)555 7334");
 		userUser.addRole(new Role("USER"));
 		userService.createUser(userUser);
 

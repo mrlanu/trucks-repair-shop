@@ -24,7 +24,8 @@
                                    placeholder="Enter vehicle milage" th:autofocus="true"/>
                             <input type="hidden" name="vehicleNumber" th:value="${vehicle.number}"/>
                             <hr/>
-                            <button type="submit" class="btn btn-primary btn-vehicle-form">SAVE</button>
+                            <button type="submit" class="btn btn-secondary">SAVE</button>
+                            <a  class="btn btn-secondary" th:href="@{/breaking/breakingList(number=${vehicle.number}, type=${vehicle.type})}">Cancel</a>
                         </div>
                     </div>
                 </div>
