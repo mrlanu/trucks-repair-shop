@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head th:replace="common/header :: common-header"></head>
 
@@ -30,21 +31,27 @@
                         <thead>
                             <tr>
                                 <th>Create date</th>
-                                <th>User create</th>
+                                <th>Created by</th>
+                                <th>Phone</th>
                                 <th>Milage</th>
                                 <th>Fixed</th>
                                 <th>Fixed date</th>
                                 <th>Mechanic</th>
+                                <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr th:each="breaking:${breakingList}" th:class="!${breaking.fixed} ? 'text-danger'">
                                 <td th:text="${#dates.format(breaking.dateCreate, 'MM-dd-yyyy HH:mm')}"></td>
                                 <td th:text="${breaking.userCreate.firstName + ' ' + breaking.userCreate.lastName}"></td>
+                                <td th:text="${breaking.userCreate.phone}"></td>
                                 <td th:text="${breaking.vehicleMilage}"></td>
                                 <td th:text="${breaking.fixed} ? 'Yes' : 'No'"></td>
                                 <td th:text="${#dates.format(breaking.dateFixed, 'MM-dd-yyyy HH:mm')}"></td>
                                 <td th:text="${breaking.userFixing}"></td>
+                                <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <a href="#" class="btn btn-danger btn-sm">Fixing it</a>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

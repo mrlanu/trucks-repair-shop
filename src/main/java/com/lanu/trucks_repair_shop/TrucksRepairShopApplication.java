@@ -52,7 +52,6 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 
 		User userUser = new User("user", "user", "Susan", "Public",
 				"public@yahoo.com", "(800)555 7334");
-		userUser.addRole(new Role("USER"));
 		userService.createUser(userUser);
 
 		Truck truck1 = new Truck("Cummins", 775, "123PI678", "Truck", "780", "2011");

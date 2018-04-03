@@ -35,7 +35,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="vehicle:${vehiclesList}" th:style="${vehicle.broken} ? 'color: red; font-weight: bold' : ''">
+                    <tr th:each="vehicle:${vehiclesList}" th:class="${vehicle.broken} ? 'text-danger'">
                         <td th:text="${vehicle.number}"></td>
                         <td th:text="${vehicle.vinNumber}"></td>
                         <td th:text="${vehicle.type}"></td>

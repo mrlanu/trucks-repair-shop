@@ -11,21 +11,36 @@ public class KindOfBreaking {
 
     private Map<Integer, String> kindMap = new HashMap<>();
 
-    private static KindOfBreaking ourInstance = new KindOfBreaking();
+    private static Integer id = 0;
 
-    public static KindOfBreaking getInstance() {
-        return ourInstance;
-    }
-
-    private KindOfBreaking() {
-        kindMap.put(0, "Breaks");
-        kindMap.put(1, "Tires");
-        kindMap.put(2, "Air");
-        kindMap.put(3, "Windshield");
-        kindMap.put(4, "Oil");
+    public KindOfBreaking() {
+        kindMap.put(id++, "Body");
+        kindMap.put(id++, "Engine");
+        kindMap.put(id++, "Suspension");
+        kindMap.put(id++, "Differential");
+        kindMap.put(id++, "Drive shafts");
+        kindMap.put(id++, "Transmission");
+        kindMap.put(id++, "Tires");
+        kindMap.put(id++, "Steering");
+        kindMap.put(id++, "Glass");
+        kindMap.put(id++, "Electric");
+        kindMap.put(id++, "Gauges");
+        kindMap.put(id++, "Air leak");
+        kindMap.put(id++, "Exhaust");
+        kindMap.put(id++, "Brakes");
+        kindMap.put(id++, "Frame");
+        kindMap.put(id++, "5th wheel");
+        kindMap.put(id++, "Battery");
+        kindMap.put(id++, "Leaks");
+        kindMap.put(id++, "Oil, PM service");
+        kindMap.put(id++, "Other");
     }
 
     public Map<Integer, String> getKindMap() {
         return kindMap;
+    }
+
+    private Integer incrementId(){
+        return id++;
     }
 }
