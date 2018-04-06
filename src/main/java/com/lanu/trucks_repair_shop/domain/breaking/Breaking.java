@@ -14,7 +14,7 @@ public class Breaking {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer breakingId;
 
     private Date dateCreate;
     private Date dateFixed;
@@ -38,12 +38,12 @@ public class Breaking {
         this.vehicleMilage = vehicleMilage;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getBreakingId() {
+        return breakingId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setBreakingId(Integer breakingId) {
+        this.breakingId = breakingId;
     }
 
     public Date getDateCreate() {

@@ -50,7 +50,7 @@
                                 <td th:text="${#dates.format(breaking.dateFixed, 'MM-dd-yyyy HH:mm')}"></td>
                                 <td th:text="${breaking.userFixing}"></td>
                                 <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">
-                                    <a href="#" class="btn btn-danger btn-sm">Fixing it</a>
+                                    <a th:href="@{/breaking/findDetails/(id=${breaking.breakingId})}" class="btn btn-danger btn-sm eBtn">Details</a>
                                 </td>
                             </tr>
                         </tbody>
@@ -59,6 +59,40 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- EDIT modal form -->
+    <div class="myForm">
+        <form th:action="@{/save}" method="post">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Details of breaking for the vehicle number &nbsp;</h5>
+                            <h5 class="modal-title" id="vehicleNumber" th:text="${vehicle.number}"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-hover table-striped table-bordered table-sm" id="breaking2">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                </tr>
+
+                            </table>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="save" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
     </div>
 </div>
 

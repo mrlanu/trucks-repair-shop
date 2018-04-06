@@ -51,6 +51,28 @@ $(document).ready(function() {
         $('#myModal #delRef').attr('href',href);
         $('#myModal').modal();
     });
+
+    $('.table .eBtn').on('click',function(event){
+        event.preventDefault();
+        var href = $(this).attr('href');
+
+            $.get(href, function(list){
+                $("#breaking2 tr").remove();
+                var i = '';
+                $.each(list, function(key, value){
+                    i += '<tr>';
+                    i += '<td>' + value.name + '</td>';
+                    i += '<td>' + value.description + '</td>';
+                    i += '<td class="text-center">'+ '<a href="#" class="btn btn-success btn-sm">Fix it</a>' + '</td>';
+                    i += '</tr>';
+                });
+                $('#breaking2').append(i);
+            });
+        $('.myForm #exampleModal').modal();
+
+
+
+    });
 });
 
 

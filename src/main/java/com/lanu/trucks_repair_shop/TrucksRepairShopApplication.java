@@ -94,7 +94,8 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 
 		truck1.setBroken(true);
 		Breaking breaking = new Breaking(new Date(), 875456);
-		breaking.addBreakingDetail(new BreakingDetail("kolesa", "zadne"));
+		breaking.addBreakingDetail(new BreakingDetail("Tires", "Left inside"));
+		breaking.addBreakingDetail(new BreakingDetail("Oil, PM service", "Change Oil"));
 		breaking.setUserCreate(userDriver);
 		truck1.addBreaking(breaking);
 		vehicleService.save(truck1);

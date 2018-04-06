@@ -1,7 +1,9 @@
 package com.lanu.trucks_repair_shop.controllers;
 
 import com.lanu.trucks_repair_shop.domain.breaking.Breaking;
+import com.lanu.trucks_repair_shop.domain.breaking.BreakingDetail;
 import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
+import com.lanu.trucks_repair_shop.repositories.BreakingRepository;
 import com.lanu.trucks_repair_shop.services.VehicleService;
 import com.lanu.trucks_repair_shop.util.KindOfBreaking;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class BreakingController {
 
     @Autowired
     private KindOfBreaking kindOfBreaking;
+
+    @Autowired
+    private BreakingRepository breakingRepository;
 
     @GetMapping("/breakingList")
     public String breakingList(@RequestParam("number") Integer number,
@@ -58,5 +63,12 @@ public class BreakingController {
         vehicleService.createBreaking(breakingKind, descriptionList, vehicleNumber, principal, breaking);
 
         return "redirect:/vehicles/vehiclesList";
+    }
+
+    @GetMapping("/findDetails")
+    @ResponseBody
+    public List<BreakingDetail> findDetails(Integer id){
+        Breaking breaking = breakingRepository.findByBreakingId(id);
+        return breaking.getBreakingDetailList();
     }
 }
