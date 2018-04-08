@@ -18,22 +18,52 @@
         })
     };
 
-    /*$.enabledDescription = function () {
-        var control, i = 1;
+    $.enabledDescription = function () {
 
-            control = $("#id_check_" + i);
-            control.bind('click', function () {
-                if (control.is(':checked')) {
-                    document.getElementById("id_desc_" + i).readOnly = false;
+        var arr = $(".checkBox");
 
-                } else {
-                    document.getElementById("id_desc_" + i).readOnly = true;
-                    $('#id_desc_' + i).val(null);
-
+        arr.bind('click', function () {
+            arr.each(function () {
+                var id = $('#id_desc_' + $(this).prop('id'));
+                if ($(this).prop("checked")) {
+                    id.prop("readonly", false);
+                }else {
+                    id.prop("readonly", true);
+                    id.val(null);
                 }
             })
+        });
+    };
 
-    };*/
+    $.breakingDetails = function () {
+        $('.table .eBtn').on('click',function(event){
+            event.preventDefault();
+            var href = $(this).attr('href');
+
+            $.get(href, function(list){
+                $("#breakingDetails tr").remove();
+                var i = '';
+                $.each(list, function(key, value){
+                    i += '<tr>';
+                    i += '<td>' + value.name + '</td>';
+                    i += '<td>' + value.description + '</td>';
+                    i += '<td class="text-center">'+ '<a href="#" class="btn btn-success btn-smj">Fix it</a>' + '</td>';
+                    i += '</tr>';
+                });
+                $('#breakingDetails').append(i);
+            });
+            $('.myForm #exampleModal').modal();
+        });
+    };
+
+    $.deleteConfirm = function () {
+        $('.table .delBtn').on('click',function(event){
+            event.preventDefault();
+            var href = $(this).attr('href');
+            $('#myModal #delRef').attr('href',href);
+            $('#myModal').modal();
+        });
+    };
 
 }(jQuery));
 
@@ -43,36 +73,12 @@ $(document).ready(function() {
         control: "#showPassword"
     });
 
-    /*$.enabledDescription();*/
+    $.enabledDescription();
 
-    $('.table .delBtn').on('click',function(event){
-        event.preventDefault();
-        var href = $(this).attr('href');
-        $('#myModal #delRef').attr('href',href);
-        $('#myModal').modal();
-    });
+    $.breakingDetails();
 
-    $('.table .eBtn').on('click',function(event){
-        event.preventDefault();
-        var href = $(this).attr('href');
+    $.deleteConfirm();
 
-            $.get(href, function(list){
-                $("#breaking2 tr").remove();
-                var i = '';
-                $.each(list, function(key, value){
-                    i += '<tr>';
-                    i += '<td>' + value.name + '</td>';
-                    i += '<td>' + value.description + '</td>';
-                    i += '<td class="text-center">'+ '<a href="#" class="btn btn-success btn-sm">Fix it</a>' + '</td>';
-                    i += '</tr>';
-                });
-                $('#breaking2').append(i);
-            });
-        $('.myForm #exampleModal').modal();
-
-
-
-    });
 });
 
 
