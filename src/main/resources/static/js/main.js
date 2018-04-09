@@ -28,10 +28,12 @@
                 id.prop("readonly", false);
                 id.focus();
                 id.prop("placeholder", '');
+                id.prop("required", true);
             }else {
                 id.prop("readonly", true);
                 id.val(null);
                 id.prop("placeholder", 'Description');
+                id.prop("required", false);
             }
         });
     };

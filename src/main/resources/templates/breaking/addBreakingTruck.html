@@ -14,14 +14,17 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="card text-white bg-primary mb-3" style="max-width: 20rem;">
+
                         <div class="card-header" th:text="${vehicle.type} + ' number: ' + ${vehicle.number}"></div>
+
                         <div class="card-body">
                             <h4 class="card-title">Breaking details</h4>
                             <hr/>
                             <br/>
                             <label for="milage">Vehicle milage</label>
-                            <input type="text" class="form-control" th:field="*{vehicleMilage}" id="milage"
-                                   placeholder="Enter vehicle milage" th:autofocus="true"/>
+                            <input type="text" class="form-control control-label" th:field="*{vehicleMilage}" id="milage"
+                                   placeholder="Enter vehicle milage" th:autofocus="true" required="required"/>
+                            <div class="badge badge-danger" th:if="${#fields.hasErrors('vehicleMilage')}" th:errors="*{vehicleMilage}"></div>
                             <input type="hidden" name="vehicleNumber" th:value="${vehicle.number}"/>
                             <hr/>
                             <button type="submit" class="btn btn-secondary">SAVE</button>

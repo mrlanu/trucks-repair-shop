@@ -9,8 +9,10 @@ import com.lanu.trucks_repair_shop.util.KindOfBreaking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -54,12 +56,18 @@ public class BreakingController {
     }
 
     @PostMapping("/saveBreaking")
-    public String saveBreaking(@ModelAttribute("breaking")Breaking breaking,
+    public String saveBreaking(@Valid Breaking breaking,
+                               BindingResult bindingResult,
                                @RequestParam("vehicleNumber")Integer vehicleNumber,
                                @RequestParam(value = "breakingKind", required = false)Integer[] breakingKind,
                                @RequestParam(value = "descriptionList", required = false)String[] descriptionList,
+                               Model model,
                                Principal principal){
-
+        if (bindingResult.hasErrors()){
+            model.addAttribute("vehicle", vehicleService.findByNumber(vehicleNumber));
+            model.addAttribute("kindMap", kindOfBreaking.getKindMap());
+            return "breaking/addBreakingTruck";
+        }
         vehicleService.createBreaking(breakingKind, descriptionList, vehicleNumber, principal, breaking);
 
         return "redirect:/vehicles/vehiclesList";

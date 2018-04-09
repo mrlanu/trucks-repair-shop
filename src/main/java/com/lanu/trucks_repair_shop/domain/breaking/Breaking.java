@@ -4,6 +4,7 @@ import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,7 +19,9 @@ public class Breaking {
 
     private Date dateCreate;
     private Date dateFixed;
-    private int vehicleMilage;
+
+    @Digits(integer = 2000000, fraction = 0)
+    private String vehicleMilage;
     private boolean fixed;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -33,7 +36,7 @@ public class Breaking {
 
     public Breaking(){}
 
-    public Breaking(Date dateCreate, int vehicleMilage) {
+    public Breaking(Date dateCreate, String vehicleMilage) {
         this.dateCreate = dateCreate;
         this.vehicleMilage = vehicleMilage;
     }
@@ -62,11 +65,11 @@ public class Breaking {
         this.dateFixed = dateFixed;
     }
 
-    public int getVehicleMilage() {
+    public String getVehicleMilage() {
         return vehicleMilage;
     }
 
-    public void setVehicleMilage(int vehicleMilage) {
+    public void setVehicleMilage(String vehicleMilage) {
         this.vehicleMilage = vehicleMilage;
     }
 
