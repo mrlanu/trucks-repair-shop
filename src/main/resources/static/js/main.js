@@ -20,18 +20,19 @@
 
     $.enabledDescription = function () {
 
-        var arr = $(".checkBox");
+        $(".checkBox").bind('click', function () {
 
-        arr.bind('click', function () {
-            arr.each(function () {
-                var id = $('#id_desc_' + $(this).prop('id'));
-                if ($(this).prop("checked")) {
-                    id.prop("readonly", false);
-                }else {
-                    id.prop("readonly", true);
-                    id.val(null);
-                }
-            })
+            var id = $('#id_desc_' + $(this).prop('id'));
+
+            if ($(this).prop("checked")) {
+                id.prop("readonly", false);
+                id.focus();
+                id.prop("placeholder", '');
+            }else {
+                id.prop("readonly", true);
+                id.val(null);
+                id.prop("placeholder", 'Description');
+            }
         });
     };
 
