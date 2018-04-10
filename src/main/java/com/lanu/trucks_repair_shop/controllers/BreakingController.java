@@ -88,15 +88,16 @@ public class BreakingController {
     @GetMapping("/fixing")
     public String fixing(@RequestParam("id")Integer id, Model model){
         Breaking breaking = breakingRepository.findByBreakingId(id);
+        model.addAttribute("vehicle", breaking.getVehicle());
         model.addAttribute("breaking", breaking);
         model.addAttribute("breakingDetails", breaking.getBreakingDetailList());
         return "breaking/fixingBreaking";
     }
 
     @PostMapping("/fixing")
-    public String fixingPost(@RequestParam("brId")Integer id,
+    public String fixingPost(@RequestParam("brId")Integer breakingId,
                              Principal principal){
-        vehicleService.fixingBreaking(id, principal);
+        vehicleService.fixingBreaking(breakingId, principal);
         return "redirect:/vehicles/vehiclesList";
     }
 }

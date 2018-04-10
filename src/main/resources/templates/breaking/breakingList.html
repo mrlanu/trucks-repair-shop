@@ -19,15 +19,22 @@
                         <div class="card-body">
                             <h4 class="card-title">Breaking list</h4>
                             <p class="card-text">This page is under construction. Sorry about that. Coming soon...</p>
-                            <a th:href="@{/breaking/showFormForAddBreaking(number=${vehicle.number}, type=${vehicle.type})}" class="btn btn-secondary">Add breaking</a>
-                            <a  class="btn btn-secondary" th:href="@{/vehicles/vehiclesList}">Cancel</a>
+
+                            <div class="row justify-content-center">
+                                <div class="col-11">
+                                    <a class="btn btn-danger btn-block"
+                                       th:href="@{/breaking/showFormForAddBreaking(number=${vehicle.number}, type=${vehicle.type})}">Add breaking</a>
+
+                                    <a  class="btn btn-secondary btn-block" th:href="@{/vehicles/vehiclesList}">Cancel</a>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-9">
-                    <table id="breaking" class="table table-hover table-striped">
+                    <table id="breaking" class="table table-hover table-striped table-bordered table-sm">
                         <thead>
                             <tr>
                                 <th>Create date</th>
@@ -37,8 +44,8 @@
                                 <th>Fixed</th>
                                 <th>Fixed date</th>
                                 <th>Mechanic</th>
-                                <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
-                                <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                                <th></th>
+                                <th sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MECHANIC')"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,10 +57,10 @@
                                 <td th:text="${breaking.fixed} ? 'Yes' : 'No'"></td>
                                 <td th:text="${#dates.format(breaking.dateFixed, 'MM-dd-yyyy HH:mm')}"></td>
                                 <td th:text="${breaking.fixed} ? ${breaking.userFixing.firstName + ' ' + breaking.userFixing.lastName}"></td>
-                                <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <td align="center">
                                     <a th:href="@{/breaking/findDetails/(id=${breaking.breakingId})}" class="btn btn-danger btn-sm eBtn">Details</a>
                                 </td>
-                                <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <td align="center" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MECHANIC')">
                                     <a th:href="@{/breaking/fixing/(id=${breaking.breakingId})}"
                                        class="btn btn-success btn-sm" th:hidden="${breaking.fixed}">Fix it</a>
                                 </td>

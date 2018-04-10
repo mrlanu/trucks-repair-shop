@@ -78,8 +78,9 @@ public class VehicleServiceImpl implements VehicleService{
     }
 
     @Override
-    public void fixingBreaking(Integer id, Principal principal) {
-        Breaking breaking = breakingRepository.findByBreakingId(id);
+    public void fixingBreaking(Integer breakingId, Principal principal) {
+
+        Breaking breaking = breakingRepository.findByBreakingId(breakingId);
         Vehicle theVehicle = breaking.getVehicle();
 
         breaking.setDateFixed(new Date());
@@ -96,6 +97,5 @@ public class VehicleServiceImpl implements VehicleService{
             theVehicle.setBroken(false);
             vehicleRepository.save(theVehicle);
         }
-
     }
 }

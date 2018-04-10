@@ -27,8 +27,12 @@
                             <div class="badge badge-danger" th:if="${#fields.hasErrors('vehicleMilage')}" th:errors="*{vehicleMilage}"></div>
                             <input type="hidden" name="vehicleNumber" th:value="${vehicle.number}"/>
                             <hr/>
-                            <button type="submit" class="btn btn-secondary">SAVE</button>
-                            <a  class="btn btn-secondary" th:href="@{/breaking/breakingList(number=${vehicle.number}, type=${vehicle.type})}">Cancel</a>
+                            <div class="row justify-content-center">
+                                <div class="col-11">
+                                    <button type="submit" class="btn btn-danger btn-success btn-block">SAVE</button>
+                                    <a  class="btn btn-secondary btn-block" th:href="@{/breaking/breakingList(number=${vehicle.number}, type=${vehicle.type})}">Cancel</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

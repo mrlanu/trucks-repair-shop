@@ -10,7 +10,7 @@
 
 <div class="container-fluid mySpace">
     <div class="row justify-content-md-center">
-        <div class="col-md-8">
+        <div class="col-md-9">
                 <form action="/unitsList" class="form-inline">
                     <div class="form-group mb-2">
                         <input type="text" class="form-control" name="type" placeholder="Search Unit by type"/>
@@ -29,7 +29,7 @@
                         <th>Model</th>
                         <th>Year</th>
                         <th>Broken</th>
-                        <th sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_DRIVER')"></th>
+                        <th sec:authorize="hasAnyRole('ROLE_DRIVER', 'ROLE_MECHANIC')"></th>
                         <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                         <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                     </tr>
@@ -48,18 +48,19 @@
                                th:class="${vehicle.broken} ? 'text-danger isDisabled' : 'isDisabled'"
                                th:text="${vehicle.broken} ? 'Yes' : 'No'"></a>
                         </td>
-                        <td align="center" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_DRIVER')">
+                        <td align="center" sec:authorize="hasAnyRole('ROLE_DRIVER', 'ROLE_MECHANIC')">
                             <!-- @{/breaking/showFormForAddBreaking(number=${vehicle.number}, type=${vehicle.type})}-->
                             <a th:href="@{/breaking/breakingList(number=${vehicle.number}, type=${vehicle.type})}"
-                               class="btn btn-dark btn-sm">Breaking</a>
+                               th:class="${vehicle.broken} ? 'btn btn-danger btn-sm btn-block' : 'btn btn-dark btn-sm btn-block'"
+                            th:text="${vehicle.broken} ? 'Broken' : 'New breaking'"></a>
                         </td>
                         <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">
                             <a th:href="@{/vehicles/showFormForEditVehicle(number=${vehicle.number}, type=${vehicle.type})}"
-                               class="btn btn-dark btn-sm">Edit</a>
+                               class="btn btn-dark btn-sm btn-block">Edit</a>
                         </td>
                         <td align="center" sec:authorize="hasRole('ROLE_ADMIN')">
                             <a th:href="@{/vehicles/deleteVehicle(number=${vehicle.number})}"
-                               class="btn btn-danger btn-sm delBtn">Delete</a>
+                               class="btn btn-danger btn-sm delBtn btn-block">Delete</a>
                         </td>
                     </tr>
                     </tbody>
