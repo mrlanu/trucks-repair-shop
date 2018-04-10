@@ -3,6 +3,7 @@ package com.lanu.trucks_repair_shop.services.services_impl;
 import com.lanu.trucks_repair_shop.domain.breaking.Breaking;
 import com.lanu.trucks_repair_shop.domain.breaking.BreakingDetail;
 import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
+import com.lanu.trucks_repair_shop.repositories.BreakingRepository;
 import com.lanu.trucks_repair_shop.repositories.MakeRepository;
 import com.lanu.trucks_repair_shop.repositories.VehicleRepository;
 import com.lanu.trucks_repair_shop.services.VehicleService;
@@ -29,6 +30,9 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Autowired
     private KindOfBreaking kindOfBreaking;
+
+    @Autowired
+    private BreakingRepository breakingRepository;
 
     @Override
     public void save(Vehicle vehicle) {
@@ -71,5 +75,14 @@ public class VehicleServiceImpl implements VehicleService{
         vehicle.addBreaking(breaking);
         vehicle.setBroken(true);
         vehicleRepository.save(vehicle);
+    }
+
+    @Override
+    public void fixingBreaking(Integer id, Principal principal) {
+        Breaking breaking = breakingRepository.findByBreakingId(id);
+        breaking.setDateFixed(new Date());
+        breaking.setUserFixing(userService.findByUsername(principal.getName()));
+        breaking.setFixed(true);
+        breakingRepository.save(breaking);
     }
 }

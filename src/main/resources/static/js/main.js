@@ -50,7 +50,7 @@
                     i += '<tr>';
                     i += '<td>' + value.name + '</td>';
                     i += '<td>' + value.description + '</td>';
-                    i += '<td class="text-center">'+ '<a href="#" class="btn btn-success btn-smj">Fix it</a>' + '</td>';
+                   // i += '<td class="text-center">'+ '<a href="#" class="btn btn-success btn-smj">Fix it</a>' + '</td>';
                     i += '</tr>';
                 });
                 $('#breakingDetails').append(i);

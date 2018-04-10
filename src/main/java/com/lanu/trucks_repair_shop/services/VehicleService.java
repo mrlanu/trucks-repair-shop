@@ -20,4 +20,6 @@ public interface VehicleService {
 
     void createBreaking(Integer[] breakingKind, String[] descriptionList,
                         Integer vehicleNumber, Principal principal, Breaking breaking);
+
+    void fixingBreaking(Integer id, Principal principal);
 }

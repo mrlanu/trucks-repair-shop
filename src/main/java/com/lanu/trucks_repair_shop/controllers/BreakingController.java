@@ -5,6 +5,7 @@ import com.lanu.trucks_repair_shop.domain.breaking.BreakingDetail;
 import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
 import com.lanu.trucks_repair_shop.repositories.BreakingRepository;
 import com.lanu.trucks_repair_shop.services.VehicleService;
+import com.lanu.trucks_repair_shop.services.security_services.UserService;
 import com.lanu.trucks_repair_shop.util.KindOfBreaking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,11 +15,15 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("/breaking")
 public class BreakingController {
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private VehicleService vehicleService;
@@ -78,5 +83,20 @@ public class BreakingController {
     public List<BreakingDetail> findDetails(Integer id){
         Breaking breaking = breakingRepository.findByBreakingId(id);
         return breaking.getBreakingDetailList();
+    }
+
+    @GetMapping("/fixing")
+    public String fixing(@RequestParam("id")Integer id, Model model){
+        Breaking breaking = breakingRepository.findByBreakingId(id);
+        model.addAttribute("breaking", breaking);
+        model.addAttribute("breakingDetails", breaking.getBreakingDetailList());
+        return "breaking/fixingBreaking";
+    }
+
+    @PostMapping("/fixing")
+    public String fixingPost(@RequestParam("brId")Integer id,
+                             Principal principal){
+        vehicleService.fixingBreaking(id, principal);
+        return "redirect:/vehicles/vehiclesList";
     }
 }
