@@ -80,9 +80,22 @@ public class VehicleServiceImpl implements VehicleService{
     @Override
     public void fixingBreaking(Integer id, Principal principal) {
         Breaking breaking = breakingRepository.findByBreakingId(id);
+        Vehicle theVehicle = breaking.getVehicle();
+
         breaking.setDateFixed(new Date());
         breaking.setUserFixing(userService.findByUsername(principal.getName()));
         breaking.setFixed(true);
         breakingRepository.save(breaking);
+
+        List<Breaking> breakingUnfixed = breakingRepository.findByVehicle(theVehicle)
+                    .stream()
+                    .filter(b -> !b.isFixed())
+                    .collect(Collectors.toList());
+
+        if (breakingUnfixed.size() == 0){
+            theVehicle.setBroken(false);
+            vehicleRepository.save(theVehicle);
+        }
+
     }
 }

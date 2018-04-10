@@ -33,8 +33,10 @@ public class Vehicle {
 
     private boolean isBroken;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "vehicle_number")
+    @OneToMany(mappedBy = "vehicle",
+                fetch = FetchType.LAZY,
+                cascade = {CascadeType.DETACH, CascadeType.MERGE,
+                            CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Breaking> breakingList;
 
     public Vehicle(){}
@@ -120,5 +122,6 @@ public class Vehicle {
             breakingList = new ArrayList<>();
         }
         breakingList.add(breaking);
+        breaking.setVehicle(this);
     }
 }

@@ -24,6 +24,11 @@ public class Breaking {
     private String vehicleMilage;
     private boolean fixed;
 
+    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "vehicle_number")
+    private Vehicle vehicle;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "breaking_id")
     private List<BreakingDetail> breakingDetailList;
@@ -99,6 +104,14 @@ public class Breaking {
 
     public List<BreakingDetail> getBreakingDetailList() {
         return breakingDetailList;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 
     public void setBreakingDetailList(List<BreakingDetail> breakingDetailList) {
