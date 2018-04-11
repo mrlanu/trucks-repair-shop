@@ -14,6 +14,10 @@ nav{
     height: 100px;
 }
 
+.th-btn-width{
+    width: 40px;
+}
+
 .mySpace{
     padding-top: 10px;
 }

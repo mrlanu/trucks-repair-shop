@@ -11,15 +11,16 @@
 <div class="container-fluid mySpace">
     <div class="row justify-content-md-center">
         <div class="col-md-9">
-                <form action="/unitsList" class="form-inline">
+                <!--<form action="/unitsList" class="form-inline">
                     <div class="form-group mb-2">
                         <input type="text" class="form-control" name="type" placeholder="Search Unit by type"/>
                         <input type="submit" value="Search" class="btn btn-primary btn-dark"/>
                     </div>
 
-                </form>
+                </form>-->
+                <br/>
 
-                <table id="example" class="table table-hover table-striped">
+                <table id="example" class="table table-hover table-striped table-bordered table-sm">
                     <thead>
                     <tr>
                         <th>Unit #</th>
@@ -29,9 +30,9 @@
                         <th>Model</th>
                         <th>Year</th>
                         <th>Broken</th>
-                        <th sec:authorize="hasAnyRole('ROLE_DRIVER', 'ROLE_MECHANIC')"></th>
-                        <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
-                        <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                        <th class="th-btn-width" sec:authorize="hasAnyRole('ROLE_DRIVER', 'ROLE_MECHANIC')"></th>
+                        <th class="th-btn-width" sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                        <th class="th-btn-width" sec:authorize="hasRole('ROLE_ADMIN')"></th>
                     </tr>
                     </thead>
                     <tbody>

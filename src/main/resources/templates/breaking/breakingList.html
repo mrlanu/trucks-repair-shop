@@ -44,8 +44,8 @@
                                 <th>Fixed</th>
                                 <th>Fixed date</th>
                                 <th>Mechanic</th>
-                                <th></th>
-                                <th sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MECHANIC')"></th>
+                                <th class="th-btn-width"></th>
+                                <th class="th-btn-width" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MECHANIC')"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,7 +62,7 @@
                                 </td>
                                 <td align="center" sec:authorize="hasAnyRole('ROLE_ADMIN', 'ROLE_MECHANIC')">
                                     <a th:href="@{/breaking/fixing/(id=${breaking.breakingId})}"
-                                       class="btn btn-success btn-sm" th:hidden="${breaking.fixed}">Fix it</a>
+                                       class="btn btn-success btn-sm btn-block" th:hidden="${breaking.fixed}">Fix it</a>
                                 </td>
                             </tr>
                         </tbody>
