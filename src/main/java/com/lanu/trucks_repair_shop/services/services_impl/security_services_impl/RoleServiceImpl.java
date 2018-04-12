@@ -9,31 +9,19 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-    @Service
-    public class RoleServiceImpl implements RoleService {
+@Service
+public class RoleServiceImpl implements RoleService {
 
-        @Autowired
-        private RoleRepository roleRepository;
+    @Autowired
+    private RoleRepository roleRepository;
 
-        @Override
-        public List<?> listAll() {
-            List<Role> roles = new ArrayList<>();
-            roleRepository.findAll().forEach(roles::add);
-            return roles;
-        }
-
-        @Override
-        public Role getById(Integer id) {
-            return roleRepository.findOne(id);
-        }
-
-        @Override
-        public Role saveOrUpdate(Role domainObject) {
-            return roleRepository.save(domainObject);
-        }
-
-        @Override
-        public void delete(Integer id) {
-            roleRepository.delete(id);
-        }
+    @Override
+    public Role findByName(String roleName) {
+        return roleRepository.findByName(roleName);
     }
+
+    @Override
+    public void save(Role role) {
+        roleRepository.save(role);
+    }
+}

@@ -9,6 +9,7 @@ import com.lanu.trucks_repair_shop.domain.vehicle.Model;
 import com.lanu.trucks_repair_shop.domain.vehicle.Trailer;
 import com.lanu.trucks_repair_shop.domain.vehicle.Truck;
 import com.lanu.trucks_repair_shop.repositories.MakeRepository;
+import com.lanu.trucks_repair_shop.services.security_services.RoleService;
 import com.lanu.trucks_repair_shop.services.security_services.UserService;
 import com.lanu.trucks_repair_shop.services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,9 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 	@Autowired
 	private MakeRepository makeRepository;
 
+	@Autowired
+	private RoleService roleService;
+
 	@Value("${spring.datasource.url}")
 	private String springDatasourceUrl;
 
@@ -43,26 +47,37 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 
 		//when running app on the localhost H2 DB the init() method will run
 
-		String localDBUrlH2 = "jdbc:h2:mem:testdb";
+		String localDBUrlH2 = "jdbc:h2:mem:testdb;";
 
-		if (springDatasourceUrl.equals(springDatasourceUrl.equals(localDBUrlH2))){init();}
+		if (springDatasourceUrl.equals(localDBUrlH2)){
+			init();
+		}
 	}
 
 	private void init(){
 
+		Role roleUser = new Role("USER");
+		roleService.save(roleUser);
+		Role roleAdmin = new Role("ADMIN");
+		roleService.save(roleAdmin);
+		Role roleDriver = new Role("DRIVER");
+		roleService.save(roleDriver);
+		Role roleMechanic = new Role("MECHANIC");
+		roleService.save(roleMechanic);
+
 		Users userAdmin = new Users("fargo", "fargo", "Serhiy", "Khabenyuk",
 				"mrlanu@gmail.com", "(773)430 7554");
-		userAdmin.addRole(new Role("ADMIN"));
+		userAdmin.addRole(roleAdmin);
 		userService.createUser(userAdmin);
 
 		Users userDriver = new Users("driver", "driver", "Igor", "Shershen",
 				"shershen@mail.com", "(773)231 1716");
-		userDriver.addRole(new Role("DRIVER"));
+		userDriver.addRole(roleDriver);
 		userService.createUser(userDriver);
 
 		Users userMechanic = new Users("mechanic", "mechanic", "Piotr", "Borush",
 				"piotr_KYS@kysexpress.com", "(773)589 9565");
-		userMechanic.addRole(new Role("MECHANIC"));
+		userMechanic.addRole(roleMechanic);
 		userService.createUser(userMechanic);
 
 		Users userUser = new Users("user", "user", "Susan", "Public",

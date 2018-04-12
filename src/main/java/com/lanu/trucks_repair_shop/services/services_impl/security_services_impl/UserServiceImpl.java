@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
     public void createUser(Users user){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
-        user.addRole(new Role("USER"));
+        user.addRole(roleService.findByName("ROLE_USER"));
         userRepository.save(user);
     }
 }
