@@ -26,7 +26,8 @@ public class Vehicle {
     @OneToOne
     private Make make;
 
-    private String model;
+    @OneToOne
+    private Model model;
 
     @Pattern(regexp = "^\\d{4}$")
     private String year;
@@ -45,11 +46,10 @@ public class Vehicle {
         this.type = type;
     }
 
-    public Vehicle(Integer number, String vinNumber, String type, String model, String year) {
+    public Vehicle(Integer number, String vinNumber, String type, String year) {
         this.number = number;
         this.vinNumber = vinNumber;
         this.type = type;
-        this.model = model;
         this.year = year;
     }
 
@@ -85,11 +85,11 @@ public class Vehicle {
         this.make = make;
     }
 
-    public String getModel() {
+    public Model getModel() {
         return model;
     }
 
-    public void setModel(String model) {
+    public void setModel(Model model) {
         this.model = model;
     }
 

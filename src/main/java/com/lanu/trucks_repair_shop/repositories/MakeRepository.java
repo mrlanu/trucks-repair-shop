@@ -8,5 +8,6 @@ import java.util.List;
 public interface MakeRepository extends JpaRepository<Make, Integer> {
 
     Make findByName(String name);
+    Make findByMakeId(Integer id);
     List<Make> findByTypeOfVehicle(String type);
 }

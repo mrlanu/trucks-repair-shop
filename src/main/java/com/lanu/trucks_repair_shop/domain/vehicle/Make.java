@@ -1,17 +1,23 @@
 package com.lanu.trucks_repair_shop.domain.vehicle;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Make {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer makeId;
 
     private String name;
 
     private String typeOfVehicle;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "make_id")
+    private List<Model> modelList;
 
     public Make(){}
 
@@ -20,12 +26,12 @@ public class Make {
         this.typeOfVehicle = typeOfVehicle;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getMakeId() {
+        return makeId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setMakeId(Integer makeId) {
+        this.makeId = makeId;
     }
 
     public String getName() {
@@ -42,5 +48,20 @@ public class Make {
 
     public void setTypeOfVehicle(String typeOfVehicle) {
         this.typeOfVehicle = typeOfVehicle;
+    }
+
+    public List<Model> getModelList() {
+        return modelList;
+    }
+
+    public void setModelList(List<Model> modelList) {
+        this.modelList = modelList;
+    }
+
+    public void addModel(Model model){
+        if (modelList == null){
+            modelList = new ArrayList<>();
+        }
+        modelList.add(model);
     }
 }

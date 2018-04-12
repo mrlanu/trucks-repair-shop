@@ -4,8 +4,8 @@ import com.lanu.trucks_repair_shop.domain.breaking.Breaking;
 import com.lanu.trucks_repair_shop.domain.breaking.BreakingDetail;
 import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
 import com.lanu.trucks_repair_shop.repositories.BreakingRepository;
-import com.lanu.trucks_repair_shop.repositories.MakeRepository;
 import com.lanu.trucks_repair_shop.repositories.VehicleRepository;
+import com.lanu.trucks_repair_shop.repositories.ModelRepository;
 import com.lanu.trucks_repair_shop.services.VehicleService;
 import com.lanu.trucks_repair_shop.services.security_services.UserService;
 import com.lanu.trucks_repair_shop.util.KindOfBreaking;
@@ -36,6 +36,8 @@ public class VehicleServiceImpl implements VehicleService{
 
     @Override
     public void save(Vehicle vehicle) {
+
+
         vehicleRepository.save(vehicle);
     }
 

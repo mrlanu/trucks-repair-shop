@@ -115,8 +115,15 @@ public class VehicleController {
         return "redirect:/vehicles/vehiclesList";
     }
 
-    @ModelAttribute("singleSelectAllValues")
+    @GetMapping("/getModelListByMake")
+    @ResponseBody
+    public List<com.lanu.trucks_repair_shop.domain.vehicle.Model> getModelListByMake(@RequestParam("makeId")Integer makeId){
+        Make make = makeRepository.findByMakeId(makeId);
+        return make.getModelList();
+    }
+
+    /*@ModelAttribute("singleSelectAllValues")
     public String[] getSingleSelectAllValues() {
         return new String[] {"YES", "NO"};
-    }
+    }*/
 }

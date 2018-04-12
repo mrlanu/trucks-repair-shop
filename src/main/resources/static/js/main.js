@@ -38,6 +38,22 @@
         });
     };
 
+    $.makeChangeModel = function () {
+        $('#make').change(function () {
+
+            var href = '/vehicles/getModelListByMake/?makeId=' + $('#make').val();
+
+            $.get(href, function (listOfModel) {
+                $("#model option").remove();
+                var i ='';
+                $.each(listOfModel, function (key, value) {
+                    i += '<option value="' + value.modelId + '">' + value.name + '</option>';
+                });
+                $('#model').append(i);
+            });
+        });
+    };
+
     $.breakingDetails = function () {
         $('.table .eBtn').on('click',function(event){
             event.preventDefault();
@@ -81,6 +97,8 @@ $(document).ready(function() {
     $.breakingDetails();
 
     $.deleteConfirm();
+
+    $.makeChangeModel();
 
 });
 

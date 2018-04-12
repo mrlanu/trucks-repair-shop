@@ -5,6 +5,7 @@ import com.lanu.trucks_repair_shop.domain.breaking.BreakingDetail;
 import com.lanu.trucks_repair_shop.domain.security.Role;
 import com.lanu.trucks_repair_shop.domain.security.User;
 import com.lanu.trucks_repair_shop.domain.vehicle.Make;
+import com.lanu.trucks_repair_shop.domain.vehicle.Model;
 import com.lanu.trucks_repair_shop.domain.vehicle.Trailer;
 import com.lanu.trucks_repair_shop.domain.vehicle.Truck;
 import com.lanu.trucks_repair_shop.repositories.MakeRepository;
@@ -59,25 +60,52 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 				"public@yahoo.com", "(800)555 7334");
 		userService.createUser(userUser);
 
-		Truck truck1 = new Truck("Cummins", 775, "123PI678", "Truck", "780", "2011");
-		Truck truck2 = new Truck("Cummins", 777, "RTI45361", "Truck", "670", "2007");
-		Truck truck3 = new Truck("Cummins", 800, "56238586", "Truck", "670", "2017");
-		Truck truck4 = new Truck("Cummins", 779, "FMI67342", "Truck", "670", "2015");
-		Truck truck5 = new Truck("Cummins", 802, "FX56P872", "Truck", "780", "2018");
+		Truck truck1 = new Truck("Cummins", 775, "123PI678", "Truck", "2011");
+		Truck truck2 = new Truck("Cummins", 777, "RTI45361", "Truck","2007");
+		Truck truck3 = new Truck("Cummins", 800, "56238586", "Truck", "2017");
+		Truck truck4 = new Truck("Cummins", 779, "FMI67342", "Truck", "2015");
+		Truck truck5 = new Truck("Cummins", 802, "FX56P872", "Truck", "2018");
 
-		Trailer trailer1 = new Trailer(1025, "HTP67TY7", "Trailer", "model 02", "2003", 53, true);
-		Trailer trailer2 = new Trailer(1009, "87654321", "Trailer", "3000 R", "2005", 53, true);
-		Trailer trailer3 = new Trailer(1118, "7378TY89", "Trailer", "model 02", "2005", 53, false);
-		Trailer trailer4 = new Trailer(1010, "WE782395", "Trailer", "3000 R", "2009", 53, true);
-		Trailer trailer5 = new Trailer(1011, "PUY78673", "Trailer", "model 01", "2011", 53, false);
-		Trailer trailer6 = new Trailer(1001, "HYW98HYI", "Trailer", "53X102", "2003", 53, true);
+
+		Trailer trailer1 = new Trailer(1025, "HTP67TY7", "Trailer", "2003", 53, true);
+		Trailer trailer2 = new Trailer(1009, "87654321", "Trailer", "2005", 53, true);
+		Trailer trailer3 = new Trailer(1118, "7378TY89", "Trailer", "2005", 53, false);
+		Trailer trailer4 = new Trailer(1010, "WE782395", "Trailer", "2009", 53, true);
+		Trailer trailer5 = new Trailer(1011, "PUY78673", "Trailer", "2011", 53, false);
+		Trailer trailer6 = new Trailer(1001, "HYW98HYI", "Trailer", "2003", 53, true);
 
 		Make makeVolvo = new Make("Volvo", "Truck");
+		Model model630 = new Model("630");
+		Model model670 = new Model("670");
+		Model model780 = new Model("780");
+		makeVolvo.addModel(model630);
+		makeVolvo.addModel(model670);
+		makeVolvo.addModel(model780);
+
 		Make makeFreightliner = new Make("Freightliner", "Truck");
+		Model modelCascadia = new Model("Cascadia");
+		Model modelColumbia = new Model("Columbia");
+		Model modelCentury = new Model("Century");
+		Model modelCoronado = new Model("Coronado");
+		makeFreightliner.addModel(modelCascadia);
+		makeFreightliner.addModel(modelCentury);
+		makeFreightliner.addModel(modelColumbia);
+		makeFreightliner.addModel(modelCoronado);
+
 		Make makePeterbilt = new Make("Peterbilt", "Truck");
+		Model model357 = new Model("357");
+		Model model365 = new Model("365");
+		Model model387 = new Model("387");
+		Model model379 = new Model("379");
+		makePeterbilt.addModel(model357);
+		makePeterbilt.addModel(model365);
+		makePeterbilt.addModel(model387);
+		makePeterbilt.addModel(model379);
+
 		Make makeGreatDane = new Make("Great Dane", "Trailer");
 		Make makeUtility = new Make("Utility", "Trailer");
 		Make makeWabash = new Make("Wabash", "Trailer");
+
 		makeRepository.save(makeVolvo);
 		makeRepository.save(makeFreightliner);
 		makeRepository.save(makePeterbilt);
@@ -85,11 +113,17 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 		makeRepository.save(makeUtility);
 		makeRepository.save(makeWabash);
 
-		truck1.setMake(makeFreightliner);
-		truck2.setMake(makeVolvo);
-		truck3.setMake(makeVolvo);
+		truck1.setMake(makeVolvo);
+		truck1.setModel(model780);
+		truck2.setMake(makeFreightliner);
+		truck2.setModel(modelCascadia);
+		truck3.setMake(makeFreightliner);
+		truck3.setMake(makePeterbilt);
+		truck3.setModel(model379);
 		truck4.setMake(makeFreightliner);
+		truck4.setModel(modelColumbia);
 		truck5.setMake(makeVolvo);
+		truck5.setModel(model670);
 		trailer1.setMake(makeGreatDane);
 		trailer2.setMake(makeGreatDane);
 		trailer3.setMake(makeUtility);
