@@ -1,6 +1,6 @@
 package com.lanu.trucks_repair_shop.services.services_impl.security_services_impl;
 
-import com.lanu.trucks_repair_shop.domain.security.User;
+import com.lanu.trucks_repair_shop.domain.security.Users;
 import com.lanu.trucks_repair_shop.services.security_services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +20,7 @@ public class UserSecurityService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.findByUsername(username);
+        Users user = userService.findByUsername(username);
         if (user == null){
             LOG.warn("Username {} not found", username);
             throw new UsernameNotFoundException("Username " + username + " not found.");

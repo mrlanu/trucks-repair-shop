@@ -1,11 +1,10 @@
 package com.lanu.trucks_repair_shop.domain.breaking;
 
-import com.lanu.trucks_repair_shop.domain.security.User;
+import com.lanu.trucks_repair_shop.domain.security.Users;
 import com.lanu.trucks_repair_shop.domain.vehicle.Vehicle;
 
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,10 +33,10 @@ public class Breaking {
     private List<BreakingDetail> breakingDetailList;
 
     @OneToOne
-    private User userCreate;
+    private Users userCreate;
 
     @OneToOne
-    private User userFixing;
+    private Users userFixing;
 
     public Breaking(){}
 
@@ -86,19 +85,19 @@ public class Breaking {
         this.fixed = fixed;
     }
 
-    public User getUserCreate() {
+    public Users getUserCreate() {
         return userCreate;
     }
 
-    public void setUserCreate(User userCreate) {
+    public void setUserCreate(Users userCreate) {
         this.userCreate = userCreate;
     }
 
-    public User getUserFixing() {
+    public Users getUserFixing() {
         return userFixing;
     }
 
-    public void setUserFixing(User userFixing) {
+    public void setUserFixing(Users userFixing) {
         this.userFixing = userFixing;
     }
 

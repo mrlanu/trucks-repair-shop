@@ -1,6 +1,6 @@
 package com.lanu.trucks_repair_shop.controllers;
 
-import com.lanu.trucks_repair_shop.domain.security.User;
+import com.lanu.trucks_repair_shop.domain.security.Users;
 import com.lanu.trucks_repair_shop.services.security_services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +21,13 @@ public class RegisterUserController {
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model){
-        User user = new User();
+        Users user = new Users();
         model.addAttribute("user", user);
         return "user/userRegistrationForm";
     }
 
     @PostMapping("/register")
-    public String registerUser(@Valid User user, BindingResult bindingResult, Model model){
+    public String registerUser(@Valid Users user, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             return "user/userRegistrationForm";
         }
@@ -39,7 +39,7 @@ public class RegisterUserController {
 
         userService.createUser(user);
 
-        User userForModel = userService.findByUsername(user.getUsername());
+        Users userForModel = userService.findByUsername(user.getUsername());
         model.addAttribute("user", userForModel);
         model.addAttribute("success", true);
 

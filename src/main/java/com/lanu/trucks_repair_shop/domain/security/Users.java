@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
-public class User extends AbstractDomainClass implements UserDetails{
+public class Users extends AbstractDomainClass implements UserDetails{
 
     @NotEmpty
     private String username;
@@ -30,9 +30,9 @@ public class User extends AbstractDomainClass implements UserDetails{
 
     private boolean enabled = true;
 
-    public User(){}
+    public Users(){}
 
-    public User(String username, String password, String firstName, String lastName, String email, String phone) {
+    public Users(String username, String password, String firstName, String lastName, String email, String phone) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -153,7 +153,7 @@ public class User extends AbstractDomainClass implements UserDetails{
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        User user = (User) object;
+        Users user = (Users) object;
         return Objects.equals(username, user.username);
     }
 

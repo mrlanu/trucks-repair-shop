@@ -3,7 +3,7 @@ package com.lanu.trucks_repair_shop;
 import com.lanu.trucks_repair_shop.domain.breaking.Breaking;
 import com.lanu.trucks_repair_shop.domain.breaking.BreakingDetail;
 import com.lanu.trucks_repair_shop.domain.security.Role;
-import com.lanu.trucks_repair_shop.domain.security.User;
+import com.lanu.trucks_repair_shop.domain.security.Users;
 import com.lanu.trucks_repair_shop.domain.vehicle.Make;
 import com.lanu.trucks_repair_shop.domain.vehicle.Model;
 import com.lanu.trucks_repair_shop.domain.vehicle.Trailer;
@@ -41,22 +41,22 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 
 	private void init(){
 
-		User userAdmin = new User("fargo", "fargo", "Serhiy", "Khabenyuk",
+		Users userAdmin = new Users("fargo", "fargo", "Serhiy", "Khabenyuk",
 				"mrlanu@gmail.com", "(773)430 7554");
 		userAdmin.addRole(new Role("ADMIN"));
 		userService.createUser(userAdmin);
 
-		User userDriver = new User("driver", "driver", "Igor", "Shershen",
+		Users userDriver = new Users("driver", "driver", "Igor", "Shershen",
 				"shershen@mail.com", "(773)231 1716");
 		userDriver.addRole(new Role("DRIVER"));
 		userService.createUser(userDriver);
 
-		User userMechanic = new User("mechanic", "mechanic", "Piotr", "Borush",
+		Users userMechanic = new Users("mechanic", "mechanic", "Piotr", "Borush",
 				"piotr_KYS@kysexpress.com", "(773)589 9565");
 		userMechanic.addRole(new Role("MECHANIC"));
 		userService.createUser(userMechanic);
 
-		User userUser = new User("user", "user", "Susan", "Public",
+		Users userUser = new Users("user", "user", "Susan", "Public",
 				"public@yahoo.com", "(800)555 7334");
 		userService.createUser(userUser);
 

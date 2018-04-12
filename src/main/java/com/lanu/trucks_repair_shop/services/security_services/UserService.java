@@ -1,9 +1,8 @@
 package com.lanu.trucks_repair_shop.services.security_services;
 
-import com.lanu.trucks_repair_shop.domain.security.User;
-import com.lanu.trucks_repair_shop.services.security_services.CRUDService;
+import com.lanu.trucks_repair_shop.domain.security.Users;
 
-public interface UserService extends CRUDService<User> {
-    User findByUsername(String username);
-    void createUser(User user);
+public interface UserService extends CRUDService<Users> {
+    Users findByUsername(String username);
+    void createUser(Users user);
 }
