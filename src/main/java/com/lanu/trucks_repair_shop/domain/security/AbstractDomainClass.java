@@ -7,7 +7,7 @@ import java.util.Date;
 public abstract class AbstractDomainClass implements DomainObject {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Version
