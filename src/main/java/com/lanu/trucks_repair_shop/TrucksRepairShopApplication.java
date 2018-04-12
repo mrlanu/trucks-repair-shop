@@ -49,9 +49,9 @@ public class TrucksRepairShopApplication implements CommandLineRunner{
 
         String localDBUrlH2 = "jdbc:h2:mem:testdb;";
 
-        //if (springDatasourceUrl.equals(localDBUrlH2)){
+        if (springDatasourceUrl.equals(localDBUrlH2)){
             init();
-        //}
+        }
     }
 
     private void init(){
