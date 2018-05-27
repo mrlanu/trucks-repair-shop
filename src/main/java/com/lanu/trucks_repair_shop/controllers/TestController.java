@@ -16,6 +16,6 @@ public class TestController {
 
     @GetMapping("/test")
     public Vehicle getTest(){
-        return vehicleService.findByNumber(775);
+        return vehicleService.findByNumber(12345);
     }
 }
