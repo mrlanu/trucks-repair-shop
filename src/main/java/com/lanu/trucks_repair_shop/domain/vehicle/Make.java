@@ -1,5 +1,7 @@
 package com.lanu.trucks_repair_shop.domain.vehicle;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +15,12 @@ public class Make {
 
     private String name;
 
+    @JsonIgnore
     private String typeOfVehicle;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "make_id")
+    @JsonIgnore
     private List<Model> modelList;
 
     public Make(){}
